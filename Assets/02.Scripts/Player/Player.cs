@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public WeaponType subWeaponType;        // ÇöÀç ¼­ºê ÅºÃ¢
 
     public enum PlayerState { Idle, Move, Shoot }
-    public enum WeaponType { Gun, Getling, Sniper }
+    public enum WeaponType { Bomb, Water, Getling }
     public bool isDie { get; set; }
 
     // ½Ì±ÛÅæ

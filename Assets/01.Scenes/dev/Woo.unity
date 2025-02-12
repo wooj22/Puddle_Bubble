@@ -448,8 +448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSpeed: 0
-  moveSpeed: 20
-  shootSpeed: 5
+  moveSpeed: 30
+  shootSpeed: 10
 --- !u!114 &237659459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackKey: 323
-  loadingKey: 114
+  changeKey: 0
   loadingCheakTime: 3
 --- !u!114 &237659462
 MonoBehaviour:
@@ -508,14 +508,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd95d0e3397f7b44be9e1647972e907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponType: 0
   damage: 5
   ammoPerShot: 1
   remainAmmo: 100
+  maxAmmo: 0
   attackCoolTime: 0.1
   bulletPrefab: {fileID: 8257593593035861150, guid: 24f53aa23a84f2d49b6a0fc4b4fd5576, type: 3}
   muzzlePoint: {fileID: 237659452}
-  muzzleFlash: {fileID: 0}
-  fireSFX: {fileID: 0}
 --- !u!1 &417596351
 GameObject:
   m_ObjectHideFlags: 0
