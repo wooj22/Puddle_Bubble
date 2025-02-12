@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 237659457}
   - component: {fileID: 237659461}
   - component: {fileID: 237659459}
+  - component: {fileID: 237659462}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -360,7 +361,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1448021196}
-  - {fileID: 519420032}
   m_Father: {fileID: 172110381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &237659453
@@ -448,6 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474d42554a494a549ac9f4817697ed7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleSpeed: 0
   moveSpeed: 20
   shootSpeed: 5
 --- !u!114 &237659459
@@ -495,6 +496,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackKey: 323
   loadingKey: 114
+  loadingCheakTime: 3
+--- !u!114 &237659462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237659451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd95d0e3397f7b44be9e1647972e907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  ammoPerShot: 1
+  remainAmmo: 100
+  attackCoolTime: 0.1
+  bulletPrefab: {fileID: 8257593593035861150, guid: 24f53aa23a84f2d49b6a0fc4b4fd5576, type: 3}
+  muzzlePoint: {fileID: 237659452}
+  muzzleFlash: {fileID: 0}
+  fireSFX: {fileID: 0}
 --- !u!1 &417596351
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +639,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 237659452}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1134902796
 GameObject:
@@ -887,6 +909,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1271015110}
+  - {fileID: 519420032}
   - {fileID: 1700811608}
   - {fileID: 172110381}
   - {fileID: 417596352}
