@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Speed")]
+    [SerializeField] private float idleSpeed = 0f;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float shootSpeed;
     private float currentSpeed;
@@ -50,6 +51,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             Player.Instance.currentPlayerState = Player.PlayerState.Idle;
+            currentSpeed = idleSpeed;
         }
 
         // move

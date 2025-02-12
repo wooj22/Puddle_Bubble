@@ -45,7 +45,5 @@ public class PlayerBattleManager : MonoBehaviour
                     break;
             }
         };
-
-
     }
 }
