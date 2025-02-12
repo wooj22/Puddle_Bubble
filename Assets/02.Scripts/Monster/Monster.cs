@@ -24,6 +24,7 @@ public class Monster : MonoBehaviour
 
     protected virtual void Start()
     {
+        ApplyGradeModifiers();
         UpdateSprite(Grade);
         transform.localScale = new Vector3(Size, Size, 1f); // 크기 반영
     }
@@ -40,4 +41,30 @@ public class Monster : MonoBehaviour
             Debug.LogWarning($"Invalid grade index {gradeIndex} for {gameObject.name}");
         }
     }
+
+    public void ApplyGradeModifiers()
+    {
+        switch (Grade)
+        {
+            case MonsterGrade.Speed:
+                Speed *= 1.2f;
+                break;
+            case MonsterGrade.Defense:
+                Health *= 2;
+                break;
+            case MonsterGrade.Elite:
+                Size *= 1.5f;
+                Health = Mathf.RoundToInt(Health * 1.5f);
+                AttackPower *= 2;
+                break;
+        }
+    }
+    
+    // 몬스터 정보 로그 출력
+    /*
+    public override string ToString()
+    {
+        return $"[Monster] Grade: {Grade}, Speed: {Speed}, Health: {Health}, Size: {Size}, AttackPower: {AttackPower}";
+    }
+    */
 }
