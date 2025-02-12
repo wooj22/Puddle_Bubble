@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Player Stat")]
-    [SerializeField] private float maxHealth = 100f;
     [SerializeField] public int currentHealth;
+    [SerializeField] private float maxHealth = 100f;
 
     [Header("State")]
     public PlayerState currentPlayerState;  // 플레이어 속도 제어 상태
