@@ -2,50 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test_MonsterSpawner : MonoBehaviour
+
+// ★ 몬스터 스폰 ★
+
+
+public class MonsterSpawner : MonoBehaviour
 {
-    public List<GameObject> monsterPrefabs; // 여러 종류의 오브젝트 리스트
+    public Camera mainCamera;
+    public GameObject mudMonsterPrefab;
+    public GameObject sandMonsterPrefab;
 
-    float minSpawnTime = 0f;  // 최소 생성 시간
-    float maxSpawnTime = 5f;  // 최대 생성 시간
-    float spawnOffset = 100f; // 화면 바깥 생성 거리 (픽셀)
+    float spawnIntervalMin = 0f;
+    float spawnIntervalMax = 5f;
+    float spawnOffset = 100f;
 
-    Camera mainCamera;
-
+    private float nextSpawnTime;
 
     void Start()
     {
-        mainCamera = Camera.main; // 카메라 변경될 수도 있음 
-        StartCoroutine(SpawnMonsterRoutine());
+        nextSpawnTime = Time.time + Random.Range(spawnIntervalMin, spawnIntervalMax);
     }
 
-
-    IEnumerator SpawnMonsterRoutine()
+    void Update()
     {
-        while (true)
+        if (Time.time >= nextSpawnTime)
         {
-            float waitTime = Random.Range(minSpawnTime, maxSpawnTime);
-            yield return new WaitForSeconds(waitTime);
-            
             SpawnMonster();
+            nextSpawnTime = Time.time + Random.Range(spawnIntervalMin, spawnIntervalMax);
         }
     }
 
-
     void SpawnMonster()
     {
-        if (mainCamera == null || monsterPrefabs.Count == 0) { Debug.LogError("mainCamera == null || monsterPrefabs.Count == 0"); return; }
+        if (mainCamera == null) { Debug.LogError("Main Camera is not assigned in MonsterSpawner."); return; }
 
-        // 현재 카메라 위치 및 화면 크기 계산
+        Vector3 spawnPosition = GetRandomOffScreenPosition();
+
+        // 몬스터 타입 랜덤 선택
+        MonsterType selectedType = Random.value > 0.5f ? MonsterType.Sand : MonsterType.Mud;
+        GameObject monsterPrefab = selectedType == MonsterType.Sand ? sandMonsterPrefab : mudMonsterPrefab;
+
+        GameObject monsterObject = Instantiate(monsterPrefab, spawnPosition, Quaternion.identity);
+        Monster monster = monsterObject.GetComponent<Monster>();
+
+        if (monster != null)
+        {
+            // 등급 랜덤 설정
+            MonsterGrade randomGrade = (MonsterGrade)Random.Range(0, 4);
+            monster.Grade = randomGrade;
+            monster.UpdateSprite(randomGrade);
+        }
+        else { Debug.LogError("Spawned monster prefab does not have a Monster script attached."); }
+    }
+
+    private Vector3 GetRandomOffScreenPosition()
+    {
         Vector3 camPosition = mainCamera.transform.position;
         float camHeight = 2f * mainCamera.orthographicSize;
         float camWidth = camHeight * mainCamera.aspect;
 
-        // 픽셀 단위 -> World 단위로 변환
         float pixelToWorld = camHeight / Screen.height;
         float worldOffset = spawnOffset * pixelToWorld;
 
-        // 랜덤한 화면 가장자리 선택 (위, 아래, 왼쪽, 오른쪽)
         int side = Random.Range(0, 4);
         Vector3 spawnPos = Vector3.zero;
 
@@ -77,8 +95,6 @@ public class Test_MonsterSpawner : MonoBehaviour
                 break;
         }
 
-        // 랜덤 오브젝트 선택 후 생성
-        GameObject randomObject = monsterPrefabs[Random.Range(0, monsterPrefabs.Count)];
-        Instantiate(randomObject, spawnPos, Quaternion.identity);
+        return spawnPos;
     }
 }
