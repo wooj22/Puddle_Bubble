@@ -54,8 +54,6 @@ public class MonsterSpawner : MonoBehaviour
             // 등급별 가중치 적용
             monster.ApplyGradeModifiers();
             monster.UpdateSprite(randomGrade);
-
-            // Debug.Log($"[Spawned Monster] Type: {selectedType}, Grade: {randomGrade}, Speed: {monster.Speed}, Health: {monster.Health}, Size: {monster.Size}, AttackPower: {monster.AttackPower}");
         }
         else { Debug.LogError("Spawned monster prefab does not have a Monster script attached."); }
     }

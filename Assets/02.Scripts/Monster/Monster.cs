@@ -17,6 +17,8 @@ public class Monster : MonoBehaviour
 
     protected SpriteRenderer spriteRenderer;
 
+    private Transform player;  // 플레이어 위치
+
     protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,6 +29,8 @@ public class Monster : MonoBehaviour
         ApplyGradeModifiers();
         UpdateSprite(Grade);
         transform.localScale = new Vector3(Size, Size, 1f); // 크기 반영
+
+        player = GameObject.FindGameObjectWithTag("Player").transform; // 플레이어 객체 (태그) 
     }
 
     public void UpdateSprite(MonsterGrade grade)
@@ -42,6 +46,7 @@ public class Monster : MonoBehaviour
         }
     }
 
+    // 등급별 가중치 
     public void ApplyGradeModifiers()
     {
         switch (Grade)
@@ -59,12 +64,19 @@ public class Monster : MonoBehaviour
                 break;
         }
     }
-    
-    // 몬스터 정보 로그 출력
-    /*
-    public override string ToString()
+
+    void Update()
     {
-        return $"[Monster] Grade: {Grade}, Speed: {Speed}, Health: {Health}, Size: {Size}, AttackPower: {AttackPower}";
+        if (player != null)
+        {
+            MoveTowardsPlayer();
+        }
     }
-    */
+
+    void MoveTowardsPlayer()
+    {
+        // Vector3 direction = (player.position - transform.position).normalized; // 플레이어-몬스터 방향 
+        transform.position = Vector3.MoveTowards(transform.position, player.position, (Speed/300f) * Time.deltaTime);
+    }
+
 }

@@ -13,5 +13,8 @@ public class SandMonster : Monster
         AttackPower = 1;
         base.Start();
     }
+
+
+
 }
 
