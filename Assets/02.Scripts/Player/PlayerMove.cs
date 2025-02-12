@@ -13,54 +13,79 @@ public class PlayerMove : MonoBehaviour
     private float horizontal;
     private float vertical;
 
+    private bool isShooting;
+    private bool isMoving;
+    private bool isBack;
+    private bool isRight;
+
     //component
     private Rigidbody rb;
     private SpriteRenderer sr;
+    private Animator ani;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        sr = GetComponent<SpriteRenderer>();
+        sr = GetComponentInChildren<SpriteRenderer>();
+        ani = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
+        GetInput();
         Move();
-        Rotation();
     }
 
-    // 이동
-    private void Move()
+    // Input
+    private void GetInput()
     {
-        // input
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+    }
 
-        // speed set
-        if (Input.GetMouseButton(0))
+    // Move
+    private void Move()
+    {
+        // bool set
+        isShooting = Input.GetMouseButton(0);
+        isMoving = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
+                        Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
+        isBack = vertical > 0;
+        isRight = horizontal > 0;
+
+        // speed, animation set
+        if (isShooting)
         {
             Player.Instance.currentPlayerState = Player.PlayerState.Shoot;
             currentSpeed = shootSpeed;
+            ani.SetBool("Attack", true);
         }
-        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
-            Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        else if (isMoving)
         {
             Player.Instance.currentPlayerState = Player.PlayerState.Move;
             currentSpeed = moveSpeed;
+            ani.SetBool("Attack", false);
+            ani.SetBool("Walk", true);
+            ani.SetBool("Idle", false);
+            if (isBack) { ani.SetBool("isBack", true); }
+            else { 
+                ani.SetBool("isBack", false); 
+                if(isRight) { sr.flipX = false; }
+                else { sr.flipX = true; }
+            }
         }
         else
         {
             Player.Instance.currentPlayerState = Player.PlayerState.Idle;
             currentSpeed = idleSpeed;
+            ani.SetBool("Attack", false);
+            ani.SetBool("Walk", false);
+            ani.SetBool("Idle", true);
+            if (isBack) { ani.SetBool("isBack", true); }
+            else { ani.SetBool("isBack", false); }
         }
 
         // move
         rb.velocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed).normalized;
-    }
-
-    // 플레이어 회전 애니메이션(?)
-    private void Rotation()
-    {
-
     }
 }
