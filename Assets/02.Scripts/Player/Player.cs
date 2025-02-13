@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
 
         isDamageing = true;
         hp--;
+        PlayerUIManager.Instance.HpUiIconDown();    // æ∆¿Ãƒ‹ UI
 
         if (hp <= 0)
         {

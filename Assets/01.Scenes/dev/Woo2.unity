@@ -565,7 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c121427f59e82458557fa5ab4d31f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score: 0
+  score: 0
+  bestScore: 0
 --- !u!1 &218144259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,6 +2634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5856428873077366304, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: miusHpSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc33a7718a710cc4aa153138a9941a75, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

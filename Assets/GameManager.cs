@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
     public int score;
     public int bestScore;
 
-    public static GameManager Instance { get; private set; }
+    public static GameManager instance { get; private set; }
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else
         {
