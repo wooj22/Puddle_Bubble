@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
         {
             hp = 0;
             isDie = true;
+            Die();
             return;
         }
     }
