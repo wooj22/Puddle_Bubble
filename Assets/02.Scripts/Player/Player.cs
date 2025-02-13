@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Player Stat")]
-    [SerializeField] public int hp = 100;
+    [SerializeField] public int hp = 5;
 
     [Header("State")]
     public PlayerState currentPlayerState;  // 플레이어 속도 제어 상태
@@ -32,9 +32,9 @@ public class Player : MonoBehaviour
     }
 
     // 피격
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-        hp -= damage;
+        hp--;
         if (hp <= 0)
         {
             hp = 0;
