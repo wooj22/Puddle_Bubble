@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         isDamageing = true;
         hp--;
         PlayerUIManager.Instance.HpUiIconDown();    // æ∆¿Ãƒ‹ UI
+        SoundManager.Instance.PlaySFX("SFX_PlayerDamaged");
 
         if (hp <= 0)
         {
