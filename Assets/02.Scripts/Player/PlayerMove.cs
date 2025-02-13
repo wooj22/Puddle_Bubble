@@ -19,13 +19,13 @@ public class PlayerMove : MonoBehaviour
     private bool isRight;
 
     //component
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator ani;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
         ani = GetComponentInChildren<Animator>();
     }

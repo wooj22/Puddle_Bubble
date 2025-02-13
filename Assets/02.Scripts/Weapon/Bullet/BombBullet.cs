@@ -25,7 +25,7 @@ public class BombBullet : MonoBehaviour
 
     void Move()
     {
-        transform.Translate(transform.right * speed *Time.deltaTime);
+        transform.Translate(transform.right * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
