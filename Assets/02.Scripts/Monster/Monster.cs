@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MonsterType { Sand, Mud } // 몬스터 종류
+public enum MonsterType { Sand, Mud, Stone } // 몬스터 종류
 public enum MonsterGrade { Normal, Speed, Defense, Elite } // 몬스터 등급
 
 public class Monster : MonoBehaviour
