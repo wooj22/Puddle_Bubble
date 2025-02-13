@@ -14,7 +14,5 @@ public class SandMonster : Monster
         base.Start();
     }
 
-
-
 }
 

@@ -16,7 +16,7 @@ public class RotateAroundCamera : MonoBehaviour
             cameraTransform = Camera.main.transform;
         }
 
-        // 초기 위치와 카메라 위치 차이를 저장
+        // 초기 위치와 카메라 위치 차이 저장
         offset = transform.position - cameraTransform.position;
     }
 
@@ -24,7 +24,7 @@ public class RotateAroundCamera : MonoBehaviour
     {
         if (cameraTransform == null) return;
 
-        // 카메라가 움직여도 일정한 거리 유지하면서 회전
+        // 움직이는 카메라와 일정한 거리 유지하면서 회전
         transform.position = cameraTransform.position + offset;
         transform.RotateAround(cameraTransform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
 

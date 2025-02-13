@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public List<GameObject> spawnPoints;  // 카메라를 중심으로 회전하는 3개 오브젝트
-    public List<GameObject> monsterList1; // 첫 번째 몬스터 리스트
-    public List<GameObject> monsterList2; // 두 번째 몬스터 리스트
-    public List<GameObject> monsterList3; // 세 번째 몬스터 리스트
+    public List<GameObject> spawnPoints;
+    public List<GameObject> monsterList1;
+    public List<GameObject> monsterList2;
+    public List<GameObject> monsterList3;
 
-    float waveIntervalMin = 0f;
-    float waveIntervalMax = 5f;
+    public float waveIntervalMin = 10f; // 웨이브 최소 대기 시간
+    public float waveIntervalMax = 15f; // 웨이브 최대 대기 시간
+    public float monsterSpawnInterval = 0.5f; // 몬스터 개별 스폰 간격
 
-    private List<List<GameObject>> allMonsterLists; // 모든 리스트를 저장할 리스트
+    private List<List<GameObject>> allMonsterLists; // 모든 리스트 저장할 리스트
+    public Transform waveParent; // 생성된 몬스터들의 부모(Parent)
 
     void Start()
     {
         // 모든 몬스터 리스트를 하나의 리스트에 저장
         allMonsterLists = new List<List<GameObject>> { monsterList1, monsterList2, monsterList3 };
 
-        // 몬스터 스폰 루틴 시작
         StartCoroutine(SpawnMonsterRoutine());
     }
 
@@ -30,7 +31,8 @@ public class WaveSpawner : MonoBehaviour
             float waitTime = Random.Range(waveIntervalMin, waveIntervalMax);
             yield return new WaitForSeconds(waitTime);
 
-            StartCoroutine(SpawnMonsters());
+            // `yield return`을 사용하여 웨이브가 끝날 때까지 대기
+            yield return StartCoroutine(SpawnMonsters());
         }
     }
 
@@ -49,8 +51,22 @@ public class WaveSpawner : MonoBehaviour
 
         foreach (GameObject monsterPrefab in selectedMonsterList)
         {
-            Instantiate(monsterPrefab, spawnPoint.position, Quaternion.identity);
-            yield return new WaitForSeconds(1f); // 1초 대기 후 다음 몬스터 스폰
+            GameObject monsterObject = Instantiate(monsterPrefab, spawnPoint.position, Quaternion.identity, waveParent);
+            Monster monster = monsterObject.GetComponent<Monster>();
+
+            if (monster != null)
+            {
+                // 등급 랜덤 설정
+                MonsterGrade randomGrade = (MonsterGrade)Random.Range(0, 4);
+                monster.Grade = randomGrade;
+
+                // 등급별 가중치 적용
+                monster.ApplyGradeModifiers();
+                monster.UpdateSprite(randomGrade);
+            }
+
+            yield return new WaitForSeconds(monsterSpawnInterval); // 0.5초 간격으로 스폰
         }
     }
 }
+

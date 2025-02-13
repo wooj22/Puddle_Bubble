@@ -40,10 +40,6 @@ public class Monster : MonoBehaviour
         {
             spriteRenderer.sprite = GradeSprite[gradeIndex];
         }
-        else
-        {
-            Debug.LogWarning($"Invalid grade index {gradeIndex} for {gameObject.name}");
-        }
     }
 
     // 등급별 가중치 
@@ -75,7 +71,6 @@ public class Monster : MonoBehaviour
 
     void MoveTowardsPlayer()
     {
-        // Vector3 direction = (player.position - transform.position).normalized; // 플레이어-몬스터 방향 
         transform.position = Vector3.MoveTowards(transform.position, player.position, (Speed/300f) * Time.deltaTime);
     }
 

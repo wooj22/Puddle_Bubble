@@ -322,6 +322,8 @@ Transform:
   m_Children:
   - {fileID: 530923317}
   - {fileID: 436699945}
+  - {fileID: 1759533214}
+  - {fileID: 736501600}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &218144259
@@ -526,6 +528,10 @@ MonoBehaviour:
   - {fileID: 5681206147338470250, guid: 7b09fa07f9a89864d86c780696398872, type: 3}
   - {fileID: 5681206147338470250, guid: 7b09fa07f9a89864d86c780696398872, type: 3}
   - {fileID: 5681206147338470250, guid: 7b09fa07f9a89864d86c780696398872, type: 3}
+  waveIntervalMin: 0
+  waveIntervalMax: 5
+  monsterSpawnInterval: 0.3
+  waveParent: {fileID: 736501600}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +839,38 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   mudMonsterPrefab: {fileID: 5681206147338470250, guid: 7b09fa07f9a89864d86c780696398872, type: 3}
   sandMonsterPrefab: {fileID: 4503117100781503756, guid: f8449f4bab74e3f4f86a7ef7070aac4a, type: 3}
+  spawnParent: {fileID: 1759533214}
+--- !u!1 &736501599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736501600}
+  m_Layer: 0
+  m_Name: WaveMonsterList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &736501600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736501599}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.586479, y: -2.893615, z: -10.161814}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 172110381}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1134902796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1050,37 @@ Transform:
   - {fileID: 37323378}
   - {fileID: 84744422}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1759533213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1759533214}
+  m_Layer: 0
+  m_Name: MonsterList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1759533214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759533213}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 172110381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

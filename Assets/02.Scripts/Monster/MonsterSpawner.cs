@@ -18,6 +18,8 @@ public class MonsterSpawner : MonoBehaviour
 
     private float nextSpawnTime;
 
+    public Transform spawnParent; // 생성된 몬스터들의 부모(Parent)
+
     void Start()
     {
         nextSpawnTime = Time.time + Random.Range(spawnIntervalMin, spawnIntervalMax);
@@ -34,7 +36,7 @@ public class MonsterSpawner : MonoBehaviour
 
     void SpawnMonster()
     {
-        if (mainCamera == null) { Debug.LogError("Main Camera is not assigned in MonsterSpawner."); return; }
+        if (mainCamera == null) { return; }
 
         Vector3 spawnPosition = GetRandomOffScreenPosition();
 
@@ -42,7 +44,7 @@ public class MonsterSpawner : MonoBehaviour
         MonsterType selectedType = Random.value > 0.5f ? MonsterType.Sand : MonsterType.Mud;
         GameObject monsterPrefab = selectedType == MonsterType.Sand ? sandMonsterPrefab : mudMonsterPrefab;
 
-        GameObject monsterObject = Instantiate(monsterPrefab, spawnPosition, Quaternion.identity);
+        GameObject monsterObject = Instantiate(monsterPrefab, spawnPosition, Quaternion.identity, spawnParent);
         Monster monster = monsterObject.GetComponent<Monster>();
 
         if (monster != null)
