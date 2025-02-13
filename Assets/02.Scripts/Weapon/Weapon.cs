@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour
     public Transform playerTrans;        // 총알 생성 위치
     //public AudioClip fireSFX;          // 발사 사운드
 
-    private Vector2 mousPos;             // 마우스 위치
+    private Vector3 mousePos;            // 마우스 위치
     private float lastAttackTime = 0f;   // 마지막 공격 시간
 
     // 공격
@@ -35,9 +35,12 @@ public class Weapon : MonoBehaviour
         {
             remainAmmo -= ammoPerShot;
 
-            GameObject bullet = Instantiate(bulletPrefab, playerTrans.position, playerTrans.rotation);
-            mousPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
-            bullet.transform.LookAt(mousPos);
+            mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
+            Vector2 shootDirection = ((Vector2)mousePos - (Vector2)playerTrans.position).normalized;
+
+            GameObject bullet = Instantiate(bulletPrefab, playerTrans.position, Quaternion.identity);
+            bullet.transform.right = shootDirection;
 
             lastAttackTime = Time.time;
         }
