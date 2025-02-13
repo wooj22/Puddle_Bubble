@@ -1843,11 +1843,11 @@ PrefabInstance:
       objectReference: {fileID: 2134160341}
     - target: {fileID: 2042370702046525587, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: moveSpeed
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2042370702046525587, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: shootSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2573723944559386963, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: m_LocalPosition.x
