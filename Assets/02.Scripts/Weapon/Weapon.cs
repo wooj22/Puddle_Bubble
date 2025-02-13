@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public Player.WeaponType weaponType;
 
     [Header("Weapon Stats")]
-    public float damage;             // 기본 데미지
+    public float damage;             // 기본 데미지(총알에 붙일거임)
     public int ammoPerShot;          // 탄약 소모량
     public int remainAmmo;           // 잔여 탄약 수
     public int maxAmmo;              // 최대 탄약 수
@@ -16,9 +16,11 @@ public class Weapon : MonoBehaviour
 
     [Header("Assets")]
     public GameObject bulletPrefab;      // 총알 프리팹
-    public Transform muzzlePoint;        // 총알 생성 위치
+    public Camera mainCamera;
+    public Transform playerTrans;        // 총알 생성 위치
     //public AudioClip fireSFX;          // 발사 사운드
 
+    private Vector2 mousPos;             // 마우스 위치
     private float lastAttackTime = 0f;   // 마지막 공격 시간
 
     // 공격
@@ -28,11 +30,15 @@ public class Weapon : MonoBehaviour
         if (Time.time - lastAttackTime < attackCoolTime)
             return;
 
-        // 탄약 확인
+        // 탄약체크 후 총알 생성
         if (remainAmmo >= ammoPerShot)
         {
-            Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
             remainAmmo -= ammoPerShot;
+
+            GameObject bullet = Instantiate(bulletPrefab, playerTrans.position, playerTrans.rotation);
+            mousPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
+            bullet.transform.LookAt(mousPos);
+
             lastAttackTime = Time.time;
         }
     }

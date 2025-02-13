@@ -336,8 +336,8 @@ GameObject:
   - component: {fileID: 237659453}
   - component: {fileID: 237659460}
   - component: {fileID: 237659457}
-  - component: {fileID: 237659461}
   - component: {fileID: 237659459}
+  - component: {fileID: 237659461}
   - component: {fileID: 237659462}
   m_Layer: 0
   m_Name: Player
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackKey: 323
-  changeKey: 0
+  changeKey: 32
   loadingCheakTime: 3
 --- !u!114 &237659462
 MonoBehaviour:
@@ -512,10 +512,11 @@ MonoBehaviour:
   damage: 5
   ammoPerShot: 1
   remainAmmo: 100
-  maxAmmo: 0
-  attackCoolTime: 0.1
+  maxAmmo: 100
+  attackCoolTime: 1
   bulletPrefab: {fileID: 8257593593035861150, guid: 24f53aa23a84f2d49b6a0fc4b4fd5576, type: 3}
-  muzzlePoint: {fileID: 237659452}
+  mainCamera: {fileID: 519420031}
+  playerTrans: {fileID: 237659452}
 --- !u!1 &417596351
 GameObject:
   m_ObjectHideFlags: 0
