@@ -30,13 +30,13 @@ public class WaveSpawner : MonoBehaviour
             float waitTime = Random.Range(waveIntervalMin, waveIntervalMax);
             yield return new WaitForSeconds(waitTime);
 
-            SpawnMonster();
+            StartCoroutine(SpawnMonsters());
         }
     }
 
-    void SpawnMonster()
+    IEnumerator SpawnMonsters()
     {
-        if (spawnPoints.Count == 0 || allMonsterLists.Count == 0) return;
+        if (spawnPoints.Count == 0 || allMonsterLists.Count == 0) yield break;
 
         // 회전하는 오브젝트 중 랜덤한 위치 선택
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)].transform;
@@ -45,12 +45,12 @@ public class WaveSpawner : MonoBehaviour
         List<GameObject> selectedMonsterList = allMonsterLists[Random.Range(0, allMonsterLists.Count)];
 
         // 리스트에 있는 모든 몬스터 스폰
-        if (selectedMonsterList.Count == 0) return;
+        if (selectedMonsterList.Count == 0) yield break;
 
-        // print("" + nameof(selectedMonsterList) + "을 웨이브 스폰합니다.");
         foreach (GameObject monsterPrefab in selectedMonsterList)
         {
             Instantiate(monsterPrefab, spawnPoint.position, Quaternion.identity);
+            yield return new WaitForSeconds(1f); // 1초 대기 후 다음 몬스터 스폰
         }
     }
 }
