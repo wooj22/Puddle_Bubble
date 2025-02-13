@@ -15,6 +15,8 @@ public class Monster : MonoBehaviour
     public int AttackPower;       // 공격력
     public Sprite[] GradeSprite;  // 등급별 스프라이트 배열 
 
+    protected bool isDead = false;
+
     protected SpriteRenderer spriteRenderer;
 
     private Transform player;  // 플레이어 위치
@@ -67,7 +69,7 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if ((player != null) && (!isDead))
         {
             MoveTowardsPlayer();
         }
@@ -79,8 +81,10 @@ public class Monster : MonoBehaviour
     }
 
     protected void Death()
-    {        
-        Destroy(gameObject, 0.5f);
+    {
         GameManager.instance.Score += (Health + (int)Speed) * AttackPower;
+        print("GameManager의 Score = " + GameManager.instance.Score);
+        Destroy(gameObject, 0.5f);
+       
     }
 }

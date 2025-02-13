@@ -167,6 +167,7 @@ MonoBehaviour:
   maxAmmo: 100
   attackCoolTime: 0.2
   ramainStep: 0
+  ramainSpeed: 0
   bulletPrefab: {fileID: 8257593593035861150, guid: 24f53aa23a84f2d49b6a0fc4b4fd5576, type: 3}
   mainCamera: {fileID: 2134160341}
   playerTrans: {fileID: 7476300}
@@ -189,6 +190,7 @@ MonoBehaviour:
   maxAmmo: 100
   attackCoolTime: 0.5
   ramainStep: 0
+  ramainSpeed: 0
   bulletPrefab: {fileID: 8257593593035861150, guid: 24f53aa23a84f2d49b6a0fc4b4fd5576, type: 3}
   mainCamera: {fileID: 2134160341}
   playerTrans: {fileID: 7476300}
@@ -211,6 +213,7 @@ MonoBehaviour:
   maxAmmo: 100
   attackCoolTime: 0.5
   ramainStep: 0
+  ramainSpeed: 0
   bulletPrefab: {fileID: 7526211535788219088, guid: 0a240aa3d82e419459ae99fa61202243, type: 3}
   mainCamera: {fileID: 2134160341}
   playerTrans: {fileID: 7476300}
@@ -257,8 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSpeed: 0
-  moveSpeed: 30
-  shootSpeed: 10
+  moveSpeed: 4
+  shootSpeed: 1
 --- !u!114 &7476296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,8 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a1a247c999a394bab5127bcf1cb262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 100
+  hp: 5
   currentPlayerState: 0
   mainWeaponType: 0
   subWeaponType: 1
