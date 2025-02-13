@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MonsterType { Sand, Mud, Stone } // ¸ó½ºÅÍ Á¾·ù
-public enum MonsterGrade { Normal, Speed, Defense, Elite } // ¸ó½ºÅÍ µî±Ş
+public enum MonsterType { Sand, Mud, Stone } // ëª¬ìŠ¤í„° ì¢…ë¥˜
+public enum MonsterGrade { Normal, Speed, Defense, Elite } // ëª¬ìŠ¤í„° ë“±ê¸‰
 
 public class Monster : MonoBehaviour
 {
-    public MonsterType Type;      // ¸ó½ºÅÍ Á¾·ù
-    public MonsterGrade Grade;    // ¸ó½ºÅÍ µî±Ş
-    public float Speed;           // ÀÌµ¿ ¼Óµµ
-    public int Health;            // Ã¼·Â
-    public float Size;            // Å©±â
-    public int AttackPower;       // °ø°İ·Â
-    // public Sprite[] GradeSprite;  // µî±Şº° ½ºÇÁ¶óÀÌÆ® ¹è¿­ 
+    public MonsterType Type;      // ëª¬ìŠ¤í„° ì¢…ë¥˜
+    public MonsterGrade Grade;    // ëª¬ìŠ¤í„° ë“±ê¸‰
+    public float Speed;           // ì´ë™ ì†ë„
+    public int Health;            // ì²´ë ¥
+    public float Size;            // í¬ê¸°
+    public int AttackPower;       // ê³µê²©ë ¥
+    // public Sprite[] GradeSprite;  // ë“±ê¸‰ë³„ ìŠ¤í”„ë¼ì´íŠ¸ ë°°ì—´ 
 
     protected bool isDead = false;
 
     protected SpriteRenderer spriteRenderer;
 
-    private Transform player;  // ÇÃ·¹ÀÌ¾î À§Ä¡
+    private Transform player;  // í”Œë ˆì´ì–´ ìœ„ì¹˜
 
     protected virtual void Awake()
     {
@@ -29,12 +29,12 @@ public class Monster : MonoBehaviour
     protected virtual void Start()
     {
         ApplyGradeModifiers();
-        transform.localScale = new Vector3(Size, Size, 1f); // Å©±â ¹İ¿µ
+        transform.localScale = new Vector3(Size, Size, 1f); // í¬ê¸° ë°˜ì˜
 
-        player = GameObject.FindGameObjectWithTag("Player").transform; // ÇÃ·¹ÀÌ¾î °´Ã¼ (ÅÂ±×) 
+        player = GameObject.FindGameObjectWithTag("Player").transform; // í”Œë ˆì´ì–´ ê°ì²´ (íƒœê·¸) 
     }
 
-    // µî±Şº° °¡ÁßÄ¡ Àû¿ë 
+    // ë“±ê¸‰ë³„ ê°€ì¤‘ì¹˜ ì ìš© 
     public void ApplyGradeModifiers()
     {
         switch (Grade)
@@ -65,13 +65,13 @@ public class Monster : MonoBehaviour
         }
     }
 
-    // ÇÃ·¹ÀÌ¾î ÇâÇØ ÀÌµ¿
+    // í”Œë ˆì´ì–´ í–¥í•´ ì´ë™
     void MoveTowardsPlayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.position, (Speed/500f) * Time.deltaTime);
     }
 
-    // ÇÃ·¹ÀÌ¾î ¹Ù¶óº¸µµ·Ï ÁÂ¿ì¹İÀü
+    // í”Œë ˆì´ì–´ ë°”ë¼ë³´ë„ë¡ ì¢Œìš°ë°˜ì „
     void FlipSprite()
     {
         if (player != null) { spriteRenderer.flipX = transform.position.x < player.position.x; }
@@ -80,9 +80,8 @@ public class Monster : MonoBehaviour
     protected void Death()
     {
         isDead = true;
-
-        GameManager.instance.Score += (Health + (int)Speed) * AttackPower;
-        print("GameManagerÀÇ Score = " + GameManager.instance.Score);
+        GameManager.instance.score += (Health + (int)Speed) * AttackPower;
+        print("GameManagerì˜ Score = " + GameManager.instance.score);
         Destroy(gameObject, 0.5f);
        
     }

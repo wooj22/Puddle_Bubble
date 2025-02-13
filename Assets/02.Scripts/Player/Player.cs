@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Player Stat")]
     [SerializeField] public int hp = 5;
+    [SerializeField] public int invincibilityTime = 2;  // 무적타임
 
     [Header("State")]
     public PlayerState currentPlayerState;  // 플레이어 속도 제어 상태
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     public enum WeaponType { Bomb, Water, Getling }
     public bool isLoading { get; set; }
     public bool isDie { get; set; }
+    private bool isDamageing;
 
     // 싱글톤
     public static Player Instance { get; private set; }
@@ -34,7 +36,12 @@ public class Player : MonoBehaviour
     // 피격
     public void TakeDamage()
     {
+        if (isDamageing) return; // 무적 상태
+
+        isDamageing = true;
         hp--;
+        PlayerUIManager.Instance.HpUiIconDown();    // 아이콘 UI
+
         if (hp <= 0)
         {
             hp = 0;
@@ -42,9 +49,17 @@ public class Player : MonoBehaviour
             Die();
             return;
         }
+
+        StartCoroutine(InvincibilityCoroutine());
     }
 
-    // 플레이어 죽음 루틴
+    private IEnumerator InvincibilityCoroutine()
+    {
+        yield return new WaitForSeconds(invincibilityTime);
+        isDamageing = false;
+    }
+
+    // Die
     public void Die()
     {
 

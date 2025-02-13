@@ -57,6 +57,7 @@ public class Weapon : MonoBehaviour
             
             lastAttackTime = Time.time;
         }
+        PlayerUIManager.Instance.UpdateMainAmmoUI(currentAmmo,maxAmmo);
     }
 
     // ¿Â¿¸
@@ -76,6 +77,7 @@ public class Weapon : MonoBehaviour
                 currentAmmo = maxAmmo;
                 yield return null;
             }
+            PlayerUIManager.Instance.UpdateMainAmmoUI(currentAmmo, maxAmmo);
         }
     }
 
@@ -83,5 +85,6 @@ public class Weapon : MonoBehaviour
     public void InitAmmo()
     {
         currentAmmo = 0;
+        PlayerUIManager.Instance.UpdateMainAmmoUI(currentAmmo, maxAmmo);
     }
 }
