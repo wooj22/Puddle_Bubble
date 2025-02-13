@@ -203,11 +203,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
-  damage: 1
+  damage: 100
   ammoPerShot: 1
   remainAmmo: 100
   maxAmmo: 100
-  attackCoolTime: 0.5
+  attackCoolTime: 0.15
   bulletPrefab: {fileID: 7526211535788219088, guid: 0a240aa3d82e419459ae99fa61202243, type: 3}
   mainCamera: {fileID: 2134160341}
   playerTrans: {fileID: 7476300}
@@ -253,8 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSpeed: 0
-  moveSpeed: 30
-  shootSpeed: 10
+  moveSpeed: 50
+  shootSpeed: 20
 --- !u!114 &7476296
 MonoBehaviour:
   m_ObjectHideFlags: 0
