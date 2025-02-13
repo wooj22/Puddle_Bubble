@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public int score;
+    public int bestScore;
 
-    public static GameManager instance;
-    public int Score;
-
-    void Start()
+    public static GameManager Instance { get; private set; }
+    private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
-        else { Destroy(this); }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
-    void Update()
+    // 적 ai가 죽을때 호출
+    public void ScoreUp(int n)
     {
-        
+        score += n;
+        UIManager.Instance.UpdateScore(score);
     }
 }

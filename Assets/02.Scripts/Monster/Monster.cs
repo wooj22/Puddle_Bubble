@@ -82,8 +82,8 @@ public class Monster : MonoBehaviour
 
     protected void Death()
     {
-        GameManager.instance.Score += (Health + (int)Speed) * AttackPower;
-        print("GameManager¿« Score = " + GameManager.instance.Score);
+        GameManager.instance.score += (Health + (int)Speed) * AttackPower;
+        print("GameManager¿« Score = " + GameManager.instance.score);
         Destroy(gameObject, 0.5f);
        
     }
