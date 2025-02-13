@@ -11,9 +11,16 @@ public class GatlingBullet : MonoBehaviour
 
     public Vector3 moveVec = Vector3.zero;
 
+    // conponets
+    private Animator animator;
+    private CircleCollider2D collider2D;
+
+
     private void Start()
     {
-        //Destroy(gameObject, 10f);
+        animator = GetComponentInChildren<Animator>();
+        collider2D = GetComponentInChildren<CircleCollider2D>();
+        Destroy(gameObject, 10f);
     }
 
     private void Update()
@@ -37,13 +44,25 @@ public class GatlingBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("SandMonster"))
         {
             collision.gameObject.GetComponent<SandMonster>().TakeDamage(damage);
-            Destroy(gameObject);
+            collider2D.enabled = false;
+            animator.SetBool("isBurst", true);
+            Destroy(gameObject,0.5f);
         }
 
         if (collision.gameObject.CompareTag("MudMonster"))
         {
             collision.gameObject.GetComponent<MudMonster>().TakeDamage(damage);
-            Destroy(gameObject);
+            collider2D.enabled = false;
+            animator.SetBool("isBurst", true);
+            Destroy(gameObject,0.5f);
+        }
+
+        if (collision.gameObject.CompareTag("StoneMonster"))
+        {
+            collision.gameObject.GetComponent<StoneMonster>().TakeDamage(damage);
+            collider2D.enabled = false;
+            animator.SetBool("isBurst", true);
+            Destroy(gameObject,0.5f);
         }
     }
 }

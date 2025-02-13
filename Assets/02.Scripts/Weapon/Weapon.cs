@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour
     public int maxAmmo;              // 최대 탄약 수
     public float attackCoolTime;     // 발사 주기
     public int ramainStep;           // 장전 스텝
+    public float ramainSpeed;        // 장전 주기
 
     [Header("Assets")]
     public GameObject bulletPrefab;      // 총알 프리팹
@@ -69,7 +70,7 @@ public class Weapon : MonoBehaviour
         while (Player.Instance.isLoading)
         {
             currentAmmo += ramainStep;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(ramainSpeed);
             if(currentAmmo >= maxAmmo)
             {
                 currentAmmo = maxAmmo;
