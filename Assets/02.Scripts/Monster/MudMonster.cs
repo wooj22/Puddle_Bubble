@@ -9,7 +9,7 @@ public class MudMonster : Monster
         Type = MonsterType.Mud;
         Speed = 600;
         Health = 100;
-        Size = 1f;
+        Size = 5f;
         AttackPower = 1;
         base.Start();
     }

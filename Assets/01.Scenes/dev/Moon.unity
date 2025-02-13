@@ -664,7 +664,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.042641692, b: 0.7433963, a: 0.32941177}
+  m_Color: {r: 0, g: 0.042641692, b: 0.7433963, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -990,7 +990,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.042641692, b: 0.7433963, a: 0.32941177}
+  m_Color: {r: 0, g: 0.042641692, b: 0.7433963, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1132,11 +1132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c987c8f3f2492094883ec654ca0b1d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 2134160341}
+  mainCamera: {fileID: 0}
   mudMonsterPrefab: {fileID: 5681206147338470250, guid: 7b09fa07f9a89864d86c780696398872, type: 3}
   sandMonsterPrefab: {fileID: 4503117100781503756, guid: f8449f4bab74e3f4f86a7ef7070aac4a, type: 3}
-  stoneMonsterPrefab: {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
-  monsterType: 0
   spawnParent: {fileID: 1759533214}
 --- !u!1 &736501599
 GameObject:
@@ -1548,7 +1546,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.042641692, b: 0.7433963, a: 0.32941177}
+  m_Color: {r: 0, g: 0.042641692, b: 0.7433963, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
