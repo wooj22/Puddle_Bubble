@@ -18,6 +18,11 @@ public class SandMonster : Monster
     {
         Health -= (int)damage;
         Debug.Log(Health);
+
+        if( Health <=0 )
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

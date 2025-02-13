@@ -14,7 +14,7 @@ public class WaveSpawner : MonoBehaviour
     public float monsterSpawnInterval = 0.5f; // 몬스터 개별 스폰 간격
 
     private List<List<GameObject>> allMonsterLists; // 모든 리스트 저장할 리스트
-    public Transform waveParent; // 생성된 몬스터들의 부모(Parent)
+    public Transform waveParent;                    // 생성된 몬스터들의 부모(Parent)
 
     void Start()
     {
