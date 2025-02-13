@@ -11,8 +11,15 @@ public class WaterBullet : MonoBehaviour
 
     public Vector3 moveVec = Vector3.zero;
 
+    // conponets
+    private Animator animator;
+    private CircleCollider2D collider2D;
+
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+        collider2D = GetComponentInChildren<CircleCollider2D>();
+
         remainDamage = damage;
         Destroy(gameObject, 10f);
     }
@@ -67,7 +74,9 @@ public class WaterBullet : MonoBehaviour
 
         if (life <= 0 || remainDamage == 0)
         {
-            Destroy(gameObject);
+            collider2D.enabled = false;
+            animator.SetBool("isBurst", true);
+            Destroy(gameObject,0.5f);
         }
     }
 }
