@@ -7,6 +7,6 @@ public class Bomb : Weapon
     public override void Attack()
     {
         base.Attack();
-        Debug.Log("气藕 捧么");
+        //Debug.Log("气藕 捧么");
     }
 }
