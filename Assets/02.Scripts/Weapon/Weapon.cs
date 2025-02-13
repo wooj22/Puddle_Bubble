@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
     private float lastAttackTime = 0f;   // 마지막 공격 시간
 
     // 공격
-    public void Attack()
+    public virtual void Attack()
     {
         // 쿨타임 제어
         if (Time.time - lastAttackTime < attackCoolTime)
