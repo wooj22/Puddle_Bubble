@@ -38,21 +38,21 @@ public class BombBullet : MonoBehaviour
             bombAraa.enabled = false;
             animator.SetBool("isBurst", true);
             DamageNearbyEnemies("SandMonster");
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject, 0.15f);
         }
         else if (collision.gameObject.CompareTag("MudMonster"))
         {
             bombAraa.enabled = false;
             animator.SetBool("isBurst", true);
             DamageNearbyEnemies("MudMonster");
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject, 0.15f);
         }
         else if (collision.gameObject.CompareTag("StoneMonster"))
         {
             bombAraa.enabled = false;
             animator.SetBool("isBurst", true);
             DamageNearbyEnemies("StoneMonster");
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject,0.15f);
         }
         if(animator == null) { Debug.Log("¾ø"); }
     }
