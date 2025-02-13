@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class StoneMonster : Monster
 {
+    public Animator anim;
+
     protected override void Start()
     {
+        anim = GetComponent<Animator>();
+
         Type = MonsterType.Stone;
         Speed = 200;
         Health = 300;
@@ -21,7 +25,8 @@ public class StoneMonster : Monster
 
         if (Health <= 0)
         {
-            Destroy(gameObject);
+            anim.SetTrigger("Die");
+            Destroy(gameObject, 0.5f);
         }
     }
 

@@ -46,7 +46,6 @@ public class MonsterSpawner : MonoBehaviour
 
         // 몬스터 타입 랜덤 선택
         MonsterType selectedType = (MonsterType)Random.Range(0, 3);
-        // MonsterType selectedType = Random.value > 0.5f ? MonsterType.Sand : MonsterType.Mud;
 
         GameObject monsterPrefab = null;
         switch (selectedType)

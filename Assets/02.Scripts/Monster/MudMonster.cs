@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class MudMonster : Monster
 {
+    public Animator anim;
+
     protected override void Start()
     {
+        anim = GetComponent<Animator>();
+
         Type = MonsterType.Mud;
         Speed = 600;
         Health = 100;
@@ -21,7 +25,8 @@ public class MudMonster : Monster
 
         if (Health <= 0)
         {
-            Destroy(gameObject);
+            anim.SetTrigger("Die");
+            Destroy(gameObject, 0.5f);
         }
     }
 

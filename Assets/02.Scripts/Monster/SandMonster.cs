@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class SandMonster : Monster
 {
+    public Animator anim;
+
     protected override void Start()
     {
+        anim = GetComponent<Animator>();
+
         Type = MonsterType.Sand;
         Speed = 300;
         Health = 500;
@@ -21,7 +25,8 @@ public class SandMonster : Monster
 
         if( Health <=0 )
         {
-            Destroy(gameObject);
+            anim.SetTrigger("Die");
+            Destroy(gameObject, 0.5f);
         }
     }
 

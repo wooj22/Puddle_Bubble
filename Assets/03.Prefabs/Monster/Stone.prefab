@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5065620877225533039}
   - component: {fileID: 3247299666595022838}
   - component: {fileID: 2109274975689620198}
+  - component: {fileID: 4532000313423583774}
   m_Layer: 0
   m_Name: Stone
   m_TagString: StoneMonster
@@ -181,3 +182,25 @@ MonoBehaviour:
   Size: 0
   AttackPower: 0
   GradeSprite: []
+  anim: {fileID: 4532000313423583774}
+--- !u!95 &4532000313423583774
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503117100781503756}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 603aab00a4e658b4484293d5123da3b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
