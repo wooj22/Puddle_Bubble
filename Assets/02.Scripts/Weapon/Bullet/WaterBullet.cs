@@ -76,7 +76,7 @@ public class WaterBullet : MonoBehaviour
         {
             collider2D.enabled = false;
             animator.SetBool("isBurst", true);
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject, 0.15f);
         }
     }
 }
