@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 5130644761788833762}
   - component: {fileID: 1239341788704886775}
   - component: {fileID: 420418380320945245}
+  - component: {fileID: 5046999109896056502}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -257,8 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a1a247c999a394bab5127bcf1cb262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
+  hp: 5
   currentPlayerState: 0
   mainWeaponType: 0
   subWeaponType: 1
@@ -275,8 +275,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSpeed: 0
-  moveSpeed: 50
-  shootSpeed: 20
+  moveSpeed: 4
+  shootSpeed: 1
 --- !u!114 &5856428873077366304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,3 +376,18 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8035119403260517917, guid: 485275fd2b98d484c9e663c732a21624, type: 3}
   mainCamera: {fileID: 0}
   playerTrans: {fileID: 2573723944559386963}
+--- !u!114 &5046999109896056502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5554078349437546793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec29e096655a049408ec9c93a0c12e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSprite: {fileID: 21300000, guid: 34eed2ed92b3992448507c0122198e3f, type: 3}
+  playerTransform: {fileID: 2573723944559386963}
+  lineMaterial: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
