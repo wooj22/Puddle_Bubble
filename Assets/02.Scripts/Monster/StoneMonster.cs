@@ -25,7 +25,6 @@ public class StoneMonster : Monster
        
         if (Health <= 0)
         {
-            isDead = true;
             anim.SetTrigger("Die");
             base.Death();
         }

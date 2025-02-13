@@ -13,7 +13,7 @@ public class Monster : MonoBehaviour
     public int Health;            // 체력
     public float Size;            // 크기
     public int AttackPower;       // 공격력
-    public Sprite[] GradeSprite;  // 등급별 스프라이트 배열 
+    // public Sprite[] GradeSprite;  // 등급별 스프라이트 배열 
 
     protected bool isDead = false;
 
@@ -29,20 +29,9 @@ public class Monster : MonoBehaviour
     protected virtual void Start()
     {
         ApplyGradeModifiers();
-        // UpdateSprite(Grade);
         transform.localScale = new Vector3(Size, Size, 1f); // 크기 반영
 
         player = GameObject.FindGameObjectWithTag("Player").transform; // 플레이어 객체 (태그) 
-    }
-
-    public void UpdateSprite(MonsterGrade grade)
-    {
-        int gradeIndex = (int)grade;
-        if (GradeSprite != null && gradeIndex >= 0 && gradeIndex < GradeSprite.Length)
-        {
-            spriteRenderer.sprite = GradeSprite[gradeIndex];
-        }
-       
     }
 
     // 등급별 가중치 적용 
@@ -71,17 +60,27 @@ public class Monster : MonoBehaviour
     {
         if ((player != null) && (!isDead))
         {
-            MoveTowardsPlayer();
+            MoveTowardsPlayer(); 
+            FlipSprite();
         }
     }
 
+    // 플레이어 향해 이동
     void MoveTowardsPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.position, (Speed/300f) * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.position, (Speed/500f) * Time.deltaTime);
+    }
+
+    // 플레이어 바라보도록 좌우반전
+    void FlipSprite()
+    {
+        if (player != null) { spriteRenderer.flipX = transform.position.x < player.position.x; }
     }
 
     protected void Death()
     {
+        isDead = true;
+
         GameManager.instance.Score += (Health + (int)Speed) * AttackPower;
         print("GameManager의 Score = " + GameManager.instance.Score);
         Destroy(gameObject, 0.5f);
