@@ -59,6 +59,6 @@ public class dimAndChangeScene : MonoBehaviour
 
         color.a = 1;
         objectRenderer.material.color = color;
-        SceneManager.LoadScene("Jun");
+        SceneManager.LoadScene("Woo2");
     }
 }
