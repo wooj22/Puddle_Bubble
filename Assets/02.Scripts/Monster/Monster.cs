@@ -42,7 +42,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    // 등급별 가중치 
+    // 등급별 가중치 적용 
     public void ApplyGradeModifiers()
     {
         switch (Grade)
@@ -73,5 +73,6 @@ public class Monster : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, player.position, (Speed/300f) * Time.deltaTime);
     }
+
 
 }
