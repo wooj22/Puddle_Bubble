@@ -82,6 +82,8 @@ public class Monster : MonoBehaviour
         isDead = true;
         GameManager.instance.score += (Health + (int)Speed) * AttackPower;
         print("GameManager의 Score = " + GameManager.instance.score);
+
+        UIManager.Instance.UpdateScore(GameManager.instance.score); 
         Destroy(gameObject, 0.5f);
        
     }
