@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3471873807130475817}
   - component: {fileID: 5276913281024688966}
-  - component: {fileID: 9113059039082249210}
   - component: {fileID: 3090936508231032521}
   m_Layer: 0
   m_Name: BombBullet
@@ -154,41 +153,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!58 &9113059039082249210
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7526211535788219088}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.5
 --- !u!114 &3090936508231032521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,4 +168,4 @@ MonoBehaviour:
   speed: 5
   damage: 3
   bombAraa: {fileID: 5276913281024688966}
-  damageArea: {fileID: 9113059039082249210}
+  damageArea: {fileID: 0}

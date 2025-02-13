@@ -6,14 +6,11 @@ public class BombBullet : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float damage;
+    [SerializeField] float explosionRadius = 10f;
     [SerializeField] CircleCollider2D bombAraa;
-    [SerializeField] CircleCollider2D damageArea;
 
     private void Start()
     {
-        damageArea = GetComponent<CircleCollider2D>();
-        bombAraa.enabled = true;
-        damageArea.enabled = false;
         Destroy(gameObject, 10f);
     }
 
@@ -30,23 +27,44 @@ public class BombBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if 적과 충돌하면
-        bombAraa.enabled = false;
-        damageArea.enabled = true;
-        DamageToEnemies();
-
-        Destroy(gameObject);
+        if (collision.gameObject.CompareTag("SandMonster"))
+        {
+            DamageNearbyEnemies("SandMonster");
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("MudMonster"))
+        {
+            DamageNearbyEnemies("MudMonster");
+            Destroy(gameObject);
+        }
     }
 
-    // 충돌한 적 get, 피격호출
-    private void DamageToEnemies()
+    private void DamageNearbyEnemies(string monsterTag)
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, damageArea.radius);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            //Enemy enemyScript = enemy.GetComponent<Enemy>();
-            //enemyScript.TakeDamage(damage);
+            if (enemy.gameObject.CompareTag(monsterTag))
+            {
+                SandMonster sandMonster = enemy.GetComponent<SandMonster>();
+                if (sandMonster != null)
+                {
+                    sandMonster.TakeDamage(damage);
+                }
+
+                MudMonster mudMonster = enemy.GetComponent<MudMonster>();
+                if (mudMonster != null)
+                {
+                    mudMonster.TakeDamage(damage);
+                }
+            }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

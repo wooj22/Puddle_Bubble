@@ -14,5 +14,10 @@ public class SandMonster : Monster
         base.Start();
     }
 
+    public void TakeDamage(float damage)
+    {
+        Health -= (int)damage;
+        Debug.Log(Health);
+    }
 }
 
