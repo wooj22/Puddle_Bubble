@@ -63,6 +63,8 @@ public class Player : MonoBehaviour
     // Die
     public void Die()
     {
-
+        Debug.Log("»ç¸Á");
+        GameManager.instance.GameOver();
+        UIManager.Instance.GameOverUI();
     }
 }
