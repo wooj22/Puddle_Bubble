@@ -140,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5554078349437546793}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a1a247c999a394bab5127bcf1cb262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
+  currentHealth: 100
   maxHealth: 100
   currentPlayerState: 0
   mainWeaponType: 0
@@ -306,6 +306,7 @@ MonoBehaviour:
   attackKey: 323
   changeKey: 32
   loadingCheakTime: 3
+  isLoadable: 0
 --- !u!114 &5130644761788833762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,11 +320,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
-  damage: 100
+  damage: 0
   ammoPerShot: 1
-  remainAmmo: 100
+  currentAmmo: 100
   maxAmmo: 100
   attackCoolTime: 0.15
+  ramainStep: 1
+  ramainSpeed: 0.5
   bulletPrefab: {fileID: 7526211535788219088, guid: 0a240aa3d82e419459ae99fa61202243, type: 3}
   mainCamera: {fileID: 0}
   playerTrans: {fileID: 2573723944559386963}
@@ -340,12 +343,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
-  damage: 10
+  damage: 0
   ammoPerShot: 1
-  remainAmmo: 100
+  currentAmmo: 0
   maxAmmo: 100
   attackCoolTime: 0.5
-  bulletPrefab: {fileID: 8257593593035861150, guid: 24f53aa23a84f2d49b6a0fc4b4fd5576, type: 3}
+  ramainStep: 1
+  ramainSpeed: 0.5
+  bulletPrefab: {fileID: 3500969957456550754, guid: b96d19de2b1bdcd4bb004d4ae5d4bd1e, type: 3}
   mainCamera: {fileID: 0}
   playerTrans: {fileID: 2573723944559386963}
 --- !u!114 &420418380320945245
@@ -361,11 +366,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
-  damage: 5
+  damage: 0
   ammoPerShot: 1
-  remainAmmo: 100
+  currentAmmo: 100
   maxAmmo: 100
-  attackCoolTime: 0.2
-  bulletPrefab: {fileID: 8257593593035861150, guid: 24f53aa23a84f2d49b6a0fc4b4fd5576, type: 3}
+  attackCoolTime: 0.15
+  ramainStep: 1
+  ramainSpeed: 0.5
+  bulletPrefab: {fileID: 8035119403260517917, guid: 485275fd2b98d484c9e663c732a21624, type: 3}
   mainCamera: {fileID: 0}
   playerTrans: {fileID: 2573723944559386963}

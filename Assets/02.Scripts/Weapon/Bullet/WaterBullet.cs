@@ -7,9 +7,20 @@ public class WaterBullet : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float damage;
     [SerializeField] int life;
+    private float remainDamage;
+
+    public Vector3 moveVec = Vector3.zero;
+
+    // conponets
+    private Animator animator;
+    private CircleCollider2D collider2D;
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+        collider2D = GetComponentInChildren<CircleCollider2D>();
+
+        remainDamage = damage;
         Destroy(gameObject, 10f);
     }
 
@@ -21,35 +32,51 @@ public class WaterBullet : MonoBehaviour
     // 총알이동
     void Move()
     {
-        transform.Translate(transform.right * speed * Time.deltaTime, Space.Self);
+        transform.Translate(moveVec * speed * Time.deltaTime, Space.Self);
     }
 
+    // 공격
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        int monsterHp=0;
         if (collision.gameObject.CompareTag("SandMonster"))
         {
             SandMonster sandMonster = collision.gameObject.GetComponent<SandMonster>();
-            sandMonster.TakeDamage(damage);
-            //monsterHp = mudMonster.GetHp();
+            int mosterHP = sandMonster.GetHealth();
+            if(remainDamage >= mosterHP)
+            {
+                sandMonster.TakeDamage(mosterHP);
+                remainDamage -= mosterHP;
+            }
+            else
+            {
+                sandMonster.TakeDamage(remainDamage);
+                remainDamage = 0;
+            }
+            life--;
         }
         
         if (collision.gameObject.CompareTag("MudMonster"))
         {
-            //MudMonster mudMonster = enemy.GetComponent<MudMonster>();
-            //mudMonster.TakeDamage(damage);
-            //몬스터의 체력을 가져온다
-            //monsterHp = mudMonster.GetHp();
-
+            MudMonster mudMonster = collision.gameObject.GetComponent<MudMonster>();
+            int mosterHP = mudMonster.GetHealth();
+            if (remainDamage >= mosterHP)
+            {
+                mudMonster.TakeDamage(mosterHP);
+                remainDamage -= mosterHP;
+            }
+            else
+            {
+                mudMonster.TakeDamage(remainDamage);
+                remainDamage = 0;
+            }
+            life--;
         }
 
-        if (monsterHp == 0)
-            return;
-        damage -= monsterHp;
-        life--;
-        if (life <= 0)
+        if (life <= 0 || remainDamage == 0)
         {
-            Destroy(gameObject);
+            collider2D.enabled = false;
+            animator.SetBool("isBurst", true);
+            Destroy(gameObject,0.5f);
         }
     }
 }

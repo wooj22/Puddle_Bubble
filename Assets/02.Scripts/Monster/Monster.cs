@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MonsterType { Sand, Mud } // 몬스터 종류
+public enum MonsterType { Sand, Mud, Stone } // 몬스터 종류
 public enum MonsterGrade { Normal, Speed, Defense, Elite } // 몬스터 등급
 
 public class Monster : MonoBehaviour
@@ -27,7 +27,7 @@ public class Monster : MonoBehaviour
     protected virtual void Start()
     {
         ApplyGradeModifiers();
-        UpdateSprite(Grade);
+        // UpdateSprite(Grade);
         transform.localScale = new Vector3(Size, Size, 1f); // 크기 반영
 
         player = GameObject.FindGameObjectWithTag("Player").transform; // 플레이어 객체 (태그) 
@@ -40,6 +40,7 @@ public class Monster : MonoBehaviour
         {
             spriteRenderer.sprite = GradeSprite[gradeIndex];
         }
+       
     }
 
     // 등급별 가중치 적용 
@@ -49,14 +50,17 @@ public class Monster : MonoBehaviour
         {
             case MonsterGrade.Speed:
                 Speed *= 1.2f;
+                spriteRenderer.color = new Color(1f, 1f, 0f);
                 break;
             case MonsterGrade.Defense:
                 Health *= 2;
+                spriteRenderer.color = new Color(0f, 0f, 1f);
                 break;
             case MonsterGrade.Elite:
                 Size *= 1.5f;
                 Health = Mathf.RoundToInt(Health * 1.5f);
                 AttackPower *= 2;
+                spriteRenderer.color = new Color(1f, 0f, 0f);
                 break;
         }
     }

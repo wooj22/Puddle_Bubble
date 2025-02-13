@@ -6,13 +6,17 @@ public class BombBullet : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float damage;
-    [SerializeField] float explosionRadius = 10f;
+    [SerializeField] float explosionRadius = 3f;
     [SerializeField] CircleCollider2D bombAraa;
 
     public Vector3 moveVec = Vector3.zero;
 
+    // conponets
+    private Animator animator;
+
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         Destroy(gameObject, 10f);
     }
 
@@ -31,14 +35,26 @@ public class BombBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SandMonster"))
         {
+            bombAraa.enabled = false;
+            animator.SetBool("isBurst", true);
             DamageNearbyEnemies("SandMonster");
-            Destroy(gameObject);
+            Destroy(gameObject,0.5f);
         }
         else if (collision.gameObject.CompareTag("MudMonster"))
         {
+            bombAraa.enabled = false;
+            animator.SetBool("isBurst", true);
             DamageNearbyEnemies("MudMonster");
-            Destroy(gameObject);
+            Destroy(gameObject,0.5f);
         }
+        else if (collision.gameObject.CompareTag("StoneMonster"))
+        {
+            bombAraa.enabled = false;
+            animator.SetBool("isBurst", true);
+            DamageNearbyEnemies("StoneMonster");
+            Destroy(gameObject,0.5f);
+        }
+        if(animator == null) { Debug.Log("¾ø"); }
     }
 
     // ÆøÅº ¹üÀ§ Enemy get
@@ -60,6 +76,12 @@ public class BombBullet : MonoBehaviour
                 if (mudMonster != null)
                 {
                     mudMonster.TakeDamage(damage);
+                }
+
+                StoneMonster stoneMonster = enemy.GetComponent<StoneMonster>();
+                if (stoneMonster != null)
+                {
+                    stoneMonster.TakeDamage(damage);
                 }
             }
         }

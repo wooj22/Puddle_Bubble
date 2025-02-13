@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     public enum PlayerState { Idle, Move, Shoot }
     public enum WeaponType { Bomb, Water, Getling }
+    public bool isLoading { get; set; }
     public bool isDie { get; set; }
 
     // ΩÃ±€≈Ê
