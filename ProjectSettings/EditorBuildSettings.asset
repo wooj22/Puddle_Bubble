@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/MainGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/01.Scenes/dev/Jun.unity
+    guid: 413d1b4d8bce4c546ba749e6915540a2
+  - enabled: 1
+    path: Assets/01.Scenes/dev/JuneTestMainScreen.unity
+    guid: 503e6282eebc45141a68bbbc758938dc
+  - enabled: 1
+    path: Assets/01.Scenes/dev/JuneTestIntro.unity
+    guid: 27968e7ea499f644f852ea597f5480a3
   m_configObjects: {}
