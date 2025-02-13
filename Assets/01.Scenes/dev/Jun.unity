@@ -353,7 +353,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 898994387}
-  - component: {fileID: 898994386}
   m_Layer: 0
   m_Name: testSpwaner (1)
   m_TagString: Untagged
@@ -361,19 +360,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &898994386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898994385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e887ad6a27df3884d823494739960a6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 1508048589}
 --- !u!4 &898994387
 Transform:
   m_ObjectHideFlags: 0
@@ -710,7 +696,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1695164816}
-  - component: {fileID: 1695164815}
   m_Layer: 0
   m_Name: testSpwaner
   m_TagString: Untagged
@@ -718,19 +703,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1695164815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695164814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e887ad6a27df3884d823494739960a6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 2000424686}
 --- !u!4 &1695164816
 Transform:
   m_ObjectHideFlags: 0
@@ -788,7 +760,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2000424689}
   - component: {fileID: 2000424688}
-  - component: {fileID: 2000424687}
   m_Layer: 0
   m_Name: WaterBullet
   m_TagString: Untagged
@@ -796,21 +767,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2000424687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000424686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b7c845f57c60e4e894356a2e5cb7f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 50
-  damage: 500
-  life: 4
 --- !u!212 &2000424688
 SpriteRenderer:
   m_ObjectHideFlags: 0
