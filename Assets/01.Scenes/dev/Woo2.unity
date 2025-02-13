@@ -203,11 +203,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
-  damage: 1
+  damage: 100
   ammoPerShot: 1
   remainAmmo: 100
   maxAmmo: 100
-  attackCoolTime: 0.5
+  attackCoolTime: 0.15
   bulletPrefab: {fileID: 7526211535788219088, guid: 0a240aa3d82e419459ae99fa61202243, type: 3}
   mainCamera: {fileID: 2134160341}
   playerTrans: {fileID: 7476300}
@@ -253,8 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSpeed: 0
-  moveSpeed: 30
-  shootSpeed: 10
+  moveSpeed: 50
+  shootSpeed: 20
 --- !u!114 &7476296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,7 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7033b0477bdac5645b97792747cc4571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 943169528}
   rotationSpeed: 30
 --- !u!114 &436699947
 MonoBehaviour:
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c987c8f3f2492094883ec654ca0b1d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 2134160341}
   mudMonsterPrefab: {fileID: 5681206147338470250, guid: 7b09fa07f9a89864d86c780696398872, type: 3}
   sandMonsterPrefab: {fileID: 4503117100781503756, guid: f8449f4bab74e3f4f86a7ef7070aac4a, type: 3}
   spawnParent: {fileID: 1759533214}
@@ -1633,7 +1633,7 @@ GameObject:
   - component: {fileID: 2134160343}
   - component: {fileID: 2134160342}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
