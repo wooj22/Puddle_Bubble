@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c94a552fb23cca540a9061b614534d01, type: 3}
-  m_Color: {r: 0.4264151, g: 0.4264151, b: 0.4264151, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,11 +107,6 @@ MonoBehaviour:
   Health: 0
   Size: 0
   AttackPower: 0
-  GradeSprite:
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   anim: {fileID: 8107529851894744684}
 --- !u!50 &3380330034921905185
 Rigidbody2D:
