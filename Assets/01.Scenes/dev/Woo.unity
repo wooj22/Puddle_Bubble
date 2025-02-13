@@ -484,7 +484,7 @@ MonoBehaviour:
   ammoPerShot: 1
   remainAmmo: 100
   maxAmmo: 100
-  attackCoolTime: 1
+  attackCoolTime: 0.5
   bulletPrefab: {fileID: 7526211535788219088, guid: 0a240aa3d82e419459ae99fa61202243, type: 3}
   mainCamera: {fileID: 519420031}
   playerTrans: {fileID: 237659452}
@@ -1267,7 +1267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3471873807130475817, guid: 0a240aa3d82e419459ae99fa61202243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3471873807130475817, guid: 0a240aa3d82e419459ae99fa61202243, type: 3}
       propertyPath: m_LocalPosition.y
