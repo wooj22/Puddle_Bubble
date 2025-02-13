@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class startSceneChange : MonoBehaviour, IPointerClickHandler
 {
+    public string sceneName = "JuneTestMainScene";
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,6 @@ public class startSceneChange : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        SceneManager.LoadScene("JuneTestMainScene");
+        SceneManager.LoadScene(sceneName);
     }
 }
