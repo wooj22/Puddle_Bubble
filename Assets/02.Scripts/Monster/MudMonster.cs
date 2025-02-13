@@ -9,7 +9,7 @@ public class MudMonster : Monster
         Type = MonsterType.Mud;
         Speed = 600;
         Health = 100;
-        Size = 5f;
+        Size = 1f;
         AttackPower = 1;
         base.Start();
     }
@@ -25,7 +25,7 @@ public class MudMonster : Monster
         }
     }
 
-    public float GetHealth()
+    public int GetHealth()
     {
         return Health;
     }

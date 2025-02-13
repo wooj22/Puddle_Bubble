@@ -27,7 +27,7 @@ public class Monster : MonoBehaviour
     protected virtual void Start()
     {
         ApplyGradeModifiers();
-        UpdateSprite(Grade);
+        // UpdateSprite(Grade);
         transform.localScale = new Vector3(Size, Size, 1f); // 크기 반영
 
         player = GameObject.FindGameObjectWithTag("Player").transform; // 플레이어 객체 (태그) 

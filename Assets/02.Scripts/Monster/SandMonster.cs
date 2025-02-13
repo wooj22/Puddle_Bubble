@@ -9,7 +9,7 @@ public class SandMonster : Monster
         Type = MonsterType.Sand;
         Speed = 300;
         Health = 500;
-        Size = 5f;
+        Size = 1f;
         AttackPower = 1;
         base.Start();
     }
@@ -25,9 +25,8 @@ public class SandMonster : Monster
         }
     }
 
-    public float GetHealth()
+    public int GetHealth()
     {
         return Health;
     }
 }
-
