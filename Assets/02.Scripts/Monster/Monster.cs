@@ -45,13 +45,13 @@ public class Monster : MonoBehaviour
                 break;
             case MonsterGrade.Defense:
                 Health *= 2;
-                spriteRenderer.color = new Color(0f, 0f, 1f);
+                spriteRenderer.color = new Color(0.329f, 0.329f, 1f); // 5454FF 
                 break;
             case MonsterGrade.Elite:
                 Size *= 1.5f;
                 Health = Mathf.RoundToInt(Health * 1.5f);
                 AttackPower *= 2;
-                spriteRenderer.color = new Color(1f, 0f, 0f);
+                spriteRenderer.color = new Color(1f, 0.278f, 0.278f); // FF4747
                 break;
         }
     }
