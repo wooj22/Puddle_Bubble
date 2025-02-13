@@ -46,7 +46,7 @@ public class GatlingBullet : MonoBehaviour
             collision.gameObject.GetComponent<SandMonster>().TakeDamage(damage);
             collider2D.enabled = false;
             animator.SetBool("isBurst", true);
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject, 0.15f);
         }
 
         if (collision.gameObject.CompareTag("MudMonster"))
@@ -54,7 +54,7 @@ public class GatlingBullet : MonoBehaviour
             collision.gameObject.GetComponent<MudMonster>().TakeDamage(damage);
             collider2D.enabled = false;
             animator.SetBool("isBurst", true);
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject, 0.15f);
         }
 
         if (collision.gameObject.CompareTag("StoneMonster"))
@@ -62,7 +62,7 @@ public class GatlingBullet : MonoBehaviour
             collision.gameObject.GetComponent<StoneMonster>().TakeDamage(damage);
             collider2D.enabled = false;
             animator.SetBool("isBurst", true);
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject, 0.15f);
         }
     }
 }

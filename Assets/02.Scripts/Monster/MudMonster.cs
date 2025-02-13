@@ -26,7 +26,7 @@ public class MudMonster : Monster
         if (Health <= 0)
         {
             anim.SetTrigger("Die");
-            Destroy(gameObject, 0.5f);
+            base.Death();
         }
     }
 
@@ -35,6 +35,13 @@ public class MudMonster : Monster
         return Health;
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Player.Instance.TakeDamage();
+        }
+    }
 }
 
 

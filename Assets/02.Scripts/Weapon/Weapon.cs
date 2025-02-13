@@ -45,24 +45,33 @@ public class Weapon : MonoBehaviour
             if(Player.Instance.mainWeaponType == Player.WeaponType.Bomb)
             {
                 bullet.GetComponent<BombBullet>().moveVec = shootDirection;
+                SoundManager.Instance.PlaySFX("SFX_Bomb");
             }
             else if(Player.Instance.mainWeaponType == Player.WeaponType.Water)
             {
                 bullet.GetComponent<WaterBullet>().moveVec = shootDirection;
+                SoundManager.Instance.PlaySFX("SFX_Water");
             }
             else
             {
                 bullet.GetComponent<GatlingBullet>().moveVec = shootDirection;
+                SoundManager.Instance.PlaySFX("SFX_Getling");
             }
             
             lastAttackTime = Time.time;
         }
+        else
+        {
+            SoundManager.Instance.PlaySFX("SFX_NonAmmo");
+        }
+        PlayerUIManager.Instance.UpdateMainAmmoUI(currentAmmo,maxAmmo);
     }
 
     // ¿Â¿¸
     public void Loading()
     {
         StartCoroutine(LoadingCo());
+        SoundManager.Instance.PlaySFX("SFX_Loading");
     }
 
     IEnumerator LoadingCo()
@@ -76,6 +85,7 @@ public class Weapon : MonoBehaviour
                 currentAmmo = maxAmmo;
                 yield return null;
             }
+            PlayerUIManager.Instance.UpdateMainAmmoUI(currentAmmo, maxAmmo);
         }
     }
 
@@ -83,5 +93,6 @@ public class Weapon : MonoBehaviour
     public void InitAmmo()
     {
         currentAmmo = 0;
+        PlayerUIManager.Instance.UpdateMainAmmoUI(currentAmmo, maxAmmo);
     }
 }
