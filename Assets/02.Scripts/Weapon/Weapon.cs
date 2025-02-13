@@ -10,9 +10,10 @@ public class Weapon : MonoBehaviour
     [Header("Weapon Stats")]
     public float damage;             // ±âº» µ¥¹ÌÁö(ÃÑ¾Ë¿¡ ºÙÀÏ°ÅÀÓ)
     public int ammoPerShot;          // Åº¾à ¼Ò¸ð·®
-    public int remainAmmo;           // ÀÜ¿© Åº¾à ¼ö
+    public int currentAmmo;          // ÀÜ¿© Åº¾à ¼ö
     public int maxAmmo;              // ÃÖ´ë Åº¾à ¼ö
     public float attackCoolTime;     // ¹ß»ç ÁÖ±â
+    public int ramainStep;           // ÀåÀü ½ºÅÜ
 
     [Header("Assets")]
     public GameObject bulletPrefab;      // ÃÑ¾Ë ÇÁ¸®ÆÕ
@@ -31,9 +32,9 @@ public class Weapon : MonoBehaviour
             return;
 
         // Åº¾àÃ¼Å© ÈÄ ÃÑ¾Ë »ý¼º
-        if (remainAmmo >= ammoPerShot)
+        if (currentAmmo >= ammoPerShot)
         {
-            remainAmmo -= ammoPerShot;
+            currentAmmo -= ammoPerShot;
 
             mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0f;
@@ -60,12 +61,26 @@ public class Weapon : MonoBehaviour
     // ÀåÀü
     public void Loading()
     {
-        
+        StartCoroutine(LoadingCo());
+    }
+
+    IEnumerator LoadingCo()
+    {
+        while (Player.Instance.isLoading)
+        {
+            currentAmmo += ramainStep;
+            yield return new WaitForSeconds(0.5f);
+            if(currentAmmo >= maxAmmo)
+            {
+                currentAmmo = maxAmmo;
+                yield return null;
+            }
+        }
     }
 
     // ÅºÃ¢¹ö¸²
     public void InitAmmo()
     {
-        remainAmmo = 0;
+        currentAmmo = 0;
     }
 }

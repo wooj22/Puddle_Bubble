@@ -88,7 +88,6 @@ public class PlayerBattleManager : MonoBehaviour
                     Player.Instance.mainWeaponType = Player.WeaponType.Bomb;
                 }
                 bomb.Loading();
-                Debug.Log("폭탄 장전");
                 break;
             case PubbleState.water:
                 if (Player.Instance.mainWeaponType != Player.WeaponType.Water)
@@ -104,7 +103,6 @@ public class PlayerBattleManager : MonoBehaviour
                     Player.Instance.mainWeaponType = Player.WeaponType.Water;
                 }
                 water.Loading();
-                Debug.Log("물 장전");
                 break;
             case PubbleState.gatling:
                 if (Player.Instance.mainWeaponType != Player.WeaponType.Getling)
@@ -117,10 +115,9 @@ public class PlayerBattleManager : MonoBehaviour
                     {
                         water.InitAmmo();
                     }
-                    Player.Instance.mainWeaponType = Player.WeaponType.Water;
+                    Player.Instance.mainWeaponType = Player.WeaponType.Getling;
                 }
-                water.Loading();
-                Debug.Log("게틀링 장전");
+                getling.Loading();
                 break;
             default:
                 Debug.Log("여기오면 안되어용");
@@ -140,7 +137,8 @@ public class PlayerBattleManager : MonoBehaviour
             {
                 if (Player.Instance.currentPlayerState == Player.PlayerState.Idle)
                 {
-                    isLoadable = true;
+                    isLoadable = true;  // 이거 안씀
+                    Player.Instance.isLoading = true;
                     LoadingCall(collision.gameObject.GetComponent<PubbleContorl>().state);
                 }
             }
@@ -150,6 +148,7 @@ public class PlayerBattleManager : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         currentCheakTime = 0;
-        isLoadable = false;
+        isLoadable = false; // 이거안씀
+        Player.Instance.isLoading = false;
     }
 }
