@@ -24,5 +24,10 @@ public class SandMonster : Monster
             Destroy(gameObject);
         }
     }
+
+    public float GetHealth()
+    {
+        return Health;
+    }
 }
 

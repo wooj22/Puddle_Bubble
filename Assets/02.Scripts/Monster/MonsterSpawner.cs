@@ -20,8 +20,12 @@ public class MonsterSpawner : MonoBehaviour
 
     public Transform spawnParent; // 생성된 몬스터들의 부모(Parent)
 
+    // public SpriteRenderer renderer;
+
+
     void Start()
     {
+        // renderer = GetComponent<SpriteRenderer>();
         nextSpawnTime = Time.time + Random.Range(spawnIntervalMin, spawnIntervalMax);
     }
 
@@ -55,7 +59,7 @@ public class MonsterSpawner : MonoBehaviour
 
             // 등급별 가중치 적용
             monster.ApplyGradeModifiers();
-            monster.UpdateSprite(randomGrade);
+           // monster.UpdateSprite(randomGrade);
         }
         else { Debug.LogError("Spawned monster prefab does not have a Monster script attached."); }
     }

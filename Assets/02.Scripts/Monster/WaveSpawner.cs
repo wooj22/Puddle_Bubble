@@ -62,7 +62,7 @@ public class WaveSpawner : MonoBehaviour
 
                 // 등급별 가중치 적용
                 monster.ApplyGradeModifiers();
-                monster.UpdateSprite(randomGrade);
+                // monster.UpdateSprite(randomGrade);
             }
 
             yield return new WaitForSeconds(monsterSpawnInterval); // 0.5초 간격으로 스폰

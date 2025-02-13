@@ -40,6 +40,7 @@ public class Monster : MonoBehaviour
         {
             spriteRenderer.sprite = GradeSprite[gradeIndex];
         }
+       
     }
 
     // 등급별 가중치 적용 
@@ -49,14 +50,17 @@ public class Monster : MonoBehaviour
         {
             case MonsterGrade.Speed:
                 Speed *= 1.2f;
+                spriteRenderer.color = new Color(1f, 1f, 0f);
                 break;
             case MonsterGrade.Defense:
                 Health *= 2;
+                spriteRenderer.color = new Color(0f, 0f, 1f);
                 break;
             case MonsterGrade.Elite:
                 Size *= 1.5f;
                 Health = Mathf.RoundToInt(Health * 1.5f);
                 AttackPower *= 2;
+                spriteRenderer.color = new Color(1f, 0f, 0f);
                 break;
         }
     }
