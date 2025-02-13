@@ -19,10 +19,6 @@ public class PlayerBattleManager : MonoBehaviour
     private Getling getling;
 
 
-    /// <summary>
-    /// 재장전 체크 뭔 웅덩인가 그거 체크하는거 만들어야댐. 기획서 이따 한번 쫙 다시 읽어봐라
-    /// </summary>
-
     private void Start()
     {
         bomb = GetComponent<Bomb>();

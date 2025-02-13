@@ -5,8 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Player Stat")]
-    [SerializeField] public int currentHealth;
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] public int hp = 100;
 
     [Header("State")]
     public PlayerState currentPlayerState;  // 플레이어 속도 제어 상태
@@ -30,5 +29,24 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    // 피격
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            hp = 0;
+            isDie = true;
+            Die();
+            return;
+        }
+    }
+
+    // 플레이어 죽음 루틴
+    public void Die()
+    {
+
     }
 }
