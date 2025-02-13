@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SandMonster
   - MudMonster
+  - Puddle
   layers:
   - Default
   - TransparentFX
