@@ -10,6 +10,11 @@ public class PlayerUIManager : MonoBehaviour
 
     [Header("UI Elements")]
     [SerializeField] private Image[] hpImageArray = new Image[5];
+    [SerializeField] private Image mainAmmoImage;
+    [SerializeField] private Image subAmmoImage;
+    [SerializeField] private Text mainAmmoText;
+    [SerializeField] private Text subAmmoText;
+    [SerializeField] private Text currentWeaponText;
 
     //[Header("UI Key Bindings")]
     //[SerializeField] private KeyCode testUIKey = KeyCode.Escape;
@@ -27,6 +32,11 @@ public class PlayerUIManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+    }
+
+    public void UpdateCurrentWeaponUI(string text)
+    {
+        currentWeaponText.text = "현재무기 : [" + text + "]";
     }
 
     // hp UI

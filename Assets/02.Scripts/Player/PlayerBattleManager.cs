@@ -82,6 +82,7 @@ public class PlayerBattleManager : MonoBehaviour
                         getling.InitAmmo();
                     }
                     Player.Instance.mainWeaponType = Player.WeaponType.Bomb;
+                    PlayerUIManager.Instance.UpdateCurrentWeaponUI("ÆøÅº");
                 }
                 bomb.Loading();
                 break;
@@ -97,6 +98,7 @@ public class PlayerBattleManager : MonoBehaviour
                         getling.InitAmmo();
                     }
                     Player.Instance.mainWeaponType = Player.WeaponType.Water;
+                    PlayerUIManager.Instance.UpdateCurrentWeaponUI("´ë¹°ÃÑ");
                 }
                 water.Loading();
                 break;
@@ -112,6 +114,7 @@ public class PlayerBattleManager : MonoBehaviour
                         water.InitAmmo();
                     }
                     Player.Instance.mainWeaponType = Player.WeaponType.Getling;
+                    PlayerUIManager.Instance.UpdateCurrentWeaponUI("°ÔÆ²¸µ");
                 }
                 getling.Loading();
                 break;
