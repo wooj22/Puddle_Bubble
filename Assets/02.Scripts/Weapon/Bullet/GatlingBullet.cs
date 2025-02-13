@@ -8,6 +8,9 @@ public class GatlingBullet : MonoBehaviour
     [SerializeField] float damage;           
     [SerializeField] float accuracy;         
     bool DirectrionChange = false;
+
+    public Vector3 moveVec = Vector3.zero;
+
     private void Start()
     {
         //Destroy(gameObject, 10f);
@@ -26,7 +29,7 @@ public class GatlingBullet : MonoBehaviour
     // √—æÀ¿Ãµø
     void Move()
     {
-        transform.Translate(transform.right * speed * Time.deltaTime, Space.Self);
+        transform.Translate(moveVec * speed * Time.deltaTime, Space.Self);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

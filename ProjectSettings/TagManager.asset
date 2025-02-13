@@ -8,6 +8,7 @@ TagManager:
   - MudMonster
   - Puddle
   - StoneMonster
+
   layers:
   - Default
   - TransparentFX

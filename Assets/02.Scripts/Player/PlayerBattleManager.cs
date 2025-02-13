@@ -11,7 +11,7 @@ public class PlayerBattleManager : MonoBehaviour
     [Header("ReLoading")]
     [SerializeField] int loadingCheakTime = 3;
     private float currentCheakTime;
-    private bool isLoadable;
+    public bool isLoadable;
 
     // component
     private Bomb bomb;
@@ -70,11 +70,11 @@ public class PlayerBattleManager : MonoBehaviour
     }
 
     // ¿Á¿Â¿¸ ∏Ì∑… (≈∫√¢√º≈© -> ¿Â¿¸)
-    private void LoadingCall(string loadingType)
+    private void LoadingCall(PubbleState state)
     {
-        switch (loadingType)
+        switch (state)
         {
-            case "Bombøıµ¢¿Ã":
+            case PubbleState.bomb:
                 if (Player.Instance.mainWeaponType != Player.WeaponType.Bomb)
                 {
                     if(Player.Instance.mainWeaponType == Player.WeaponType.Water)
@@ -89,7 +89,7 @@ public class PlayerBattleManager : MonoBehaviour
                 }
                 bomb.Loading();
                 break;
-            case "Waterøıµ¢¿Ã":
+            case PubbleState.water:
                 if (Player.Instance.mainWeaponType != Player.WeaponType.Water)
                 {
                     if (Player.Instance.mainWeaponType == Player.WeaponType.Bomb)
@@ -104,7 +104,7 @@ public class PlayerBattleManager : MonoBehaviour
                 }
                 water.Loading();
                 break;
-            case "Getlingøıµ¢¿Ã":
+            case PubbleState.gatling:
                 if (Player.Instance.mainWeaponType != Player.WeaponType.Getling)
                 {
                     if (Player.Instance.mainWeaponType == Player.WeaponType.Bomb)
@@ -115,9 +115,9 @@ public class PlayerBattleManager : MonoBehaviour
                     {
                         water.InitAmmo();
                     }
-                    Player.Instance.mainWeaponType = Player.WeaponType.Water;
+                    Player.Instance.mainWeaponType = Player.WeaponType.Getling;
                 }
-                water.Loading();
+                getling.Loading();
                 break;
             default:
                 Debug.Log("ø©±‚ø¿∏È æ»µ«æÓøÎ");
@@ -130,18 +130,16 @@ public class PlayerBattleManager : MonoBehaviour
     // ¿Ã¡¶ æÓ∂≤ π∞øıµ¢¿Ã¿Œ¡ˆ √º≈©«œ∞Ì ≈∫√¢ ∫Ø»Ø«œ¥¬∞≈ √ﬂ∞° « ø‰
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "∆¯≈∫øıµ¢¿Ã" ||       // TODO : ∞Ì√ƒ∂Û
-            collision.gameObject.tag == "π∞√—øıµ¢¿Ã" ||
-            collision.gameObject.tag == "∞‘∆≤∏µøıµ¢¿Ã")
+        if (collision.gameObject.CompareTag("Puddle"))
         {
             currentCheakTime += Time.deltaTime;
             if (currentCheakTime >= loadingCheakTime)
             {
                 if (Player.Instance.currentPlayerState == Player.PlayerState.Idle)
                 {
-                    isLoadable = true;
-                    
-                    LoadingCall(collision.gameObject.tag);
+                    isLoadable = true;  // ¿Ã∞≈ æ»æ∏
+                    Player.Instance.isLoading = true;
+                    LoadingCall(collision.gameObject.GetComponent<PubbleContorl>().state);
                 }
             }
         }
@@ -150,6 +148,7 @@ public class PlayerBattleManager : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         currentCheakTime = 0;
-        isLoadable = false;
+        isLoadable = false; // ¿Ã∞≈æ»æ∏
+        Player.Instance.isLoading = false;
     }
 }
