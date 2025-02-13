@@ -86,6 +86,6 @@ public class PlayerMove : MonoBehaviour
         }
 
         // move
-        rb.velocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed).normalized;
+        rb.velocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed);
     }
 }

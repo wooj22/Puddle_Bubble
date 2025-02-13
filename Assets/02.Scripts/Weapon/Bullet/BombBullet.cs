@@ -11,8 +11,12 @@ public class BombBullet : MonoBehaviour
 
     public Vector3 moveVec = Vector3.zero;
 
+    // conponets
+    private Animator animator;
+
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         Destroy(gameObject, 10f);
     }
 
@@ -31,19 +35,26 @@ public class BombBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SandMonster"))
         {
+            bombAraa.enabled = false;
+            animator.SetBool("isBurst", true);
             DamageNearbyEnemies("SandMonster");
-            Destroy(gameObject);
+            Destroy(gameObject,0.5f);
         }
         else if (collision.gameObject.CompareTag("MudMonster"))
         {
+            bombAraa.enabled = false;
+            animator.SetBool("isBurst", true);
             DamageNearbyEnemies("MudMonster");
-            Destroy(gameObject);
+            Destroy(gameObject,0.5f);
         }
         else if (collision.gameObject.CompareTag("StoneMonster"))
         {
+            bombAraa.enabled = false;
+            animator.SetBool("isBurst", true);
             DamageNearbyEnemies("StoneMonster");
-            Destroy(gameObject);
+            Destroy(gameObject,0.5f);
         }
+        if(animator == null) { Debug.Log("¾ø"); }
     }
 
     // ÆøÅº ¹üÀ§ Enemy get
