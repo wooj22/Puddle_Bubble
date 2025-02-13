@@ -25,7 +25,6 @@ public class StoneMonster : Monster
        
         if (Health <= 0)
         {
-            isDead = true;
             anim.SetTrigger("Die");
             base.Death();
         }
@@ -36,4 +35,12 @@ public class StoneMonster : Monster
         return Health;
     }
 
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Player.Instance.TakeDamage();
+        }
+    }
 }
