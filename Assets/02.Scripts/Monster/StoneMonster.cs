@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MudMonster : Monster
+public class StoneMonster : Monster
 {
     protected override void Start()
     {
-        Type = MonsterType.Mud;
-        Speed = 600;
-        Health = 100;
+        Type = MonsterType.Stone;
+        Speed = 200;
+        Health = 300;
         Size = 1f;
         AttackPower = 1;
         base.Start();
@@ -31,5 +31,3 @@ public class MudMonster : Monster
     }
 
 }
-
-

@@ -6,7 +6,7 @@ public class BombBullet : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float damage;
-    [SerializeField] float explosionRadius = 10f;
+    [SerializeField] float explosionRadius = 3f;
     [SerializeField] CircleCollider2D bombAraa;
 
     public Vector3 moveVec = Vector3.zero;
@@ -39,6 +39,11 @@ public class BombBullet : MonoBehaviour
             DamageNearbyEnemies("MudMonster");
             Destroy(gameObject);
         }
+        else if (collision.gameObject.CompareTag("StoneMonster"))
+        {
+            DamageNearbyEnemies("StoneMonster");
+            Destroy(gameObject);
+        }
     }
 
     // ÆøÅº ¹üÀ§ Enemy get
@@ -60,6 +65,12 @@ public class BombBullet : MonoBehaviour
                 if (mudMonster != null)
                 {
                     mudMonster.TakeDamage(damage);
+                }
+
+                StoneMonster stoneMonster = enemy.GetComponent<StoneMonster>();
+                if (stoneMonster != null)
+                {
+                    stoneMonster.TakeDamage(damage);
                 }
             }
         }

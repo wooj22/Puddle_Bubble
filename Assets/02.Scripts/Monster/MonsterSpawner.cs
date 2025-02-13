@@ -11,6 +11,9 @@ public class MonsterSpawner : MonoBehaviour
     public Camera mainCamera;
     public GameObject mudMonsterPrefab;
     public GameObject sandMonsterPrefab;
+    public GameObject stoneMonsterPrefab;
+
+    public MonsterType monsterType;
 
     float spawnIntervalMin = 0f;
     float spawnIntervalMax = 5f;
@@ -20,12 +23,9 @@ public class MonsterSpawner : MonoBehaviour
 
     public Transform spawnParent; // 생성된 몬스터들의 부모(Parent)
 
-    // public SpriteRenderer renderer;
-
 
     void Start()
     {
-        // renderer = GetComponent<SpriteRenderer>();
         nextSpawnTime = Time.time + Random.Range(spawnIntervalMin, spawnIntervalMax);
     }
 
@@ -45,8 +45,24 @@ public class MonsterSpawner : MonoBehaviour
         Vector3 spawnPosition = GetRandomOffScreenPosition();
 
         // 몬스터 타입 랜덤 선택
-        MonsterType selectedType = Random.value > 0.5f ? MonsterType.Sand : MonsterType.Mud;
-        GameObject monsterPrefab = selectedType == MonsterType.Sand ? sandMonsterPrefab : mudMonsterPrefab;
+        MonsterType selectedType = (MonsterType)Random.Range(0, 3);
+        // MonsterType selectedType = Random.value > 0.5f ? MonsterType.Sand : MonsterType.Mud;
+
+        GameObject monsterPrefab = null;
+        switch (selectedType)
+        {
+            case MonsterType.Sand:
+                monsterPrefab = sandMonsterPrefab;
+                break;
+            case MonsterType.Mud:
+                monsterPrefab = mudMonsterPrefab;
+                break;
+            case MonsterType.Stone:
+                monsterPrefab = stoneMonsterPrefab;
+                break;
+        }
+
+        if (monsterPrefab == null) { return; }
 
         GameObject monsterObject = Instantiate(monsterPrefab, spawnPosition, Quaternion.identity, spawnParent);
         Monster monster = monsterObject.GetComponent<Monster>();
@@ -59,7 +75,7 @@ public class MonsterSpawner : MonoBehaviour
 
             // 등급별 가중치 적용
             monster.ApplyGradeModifiers();
-           // monster.UpdateSprite(randomGrade);
+           // monster.UpdateSprite(randomGrade); // 몬스터 색상 코드 조정 
         }
         else { Debug.LogError("Spawned monster prefab does not have a Monster script attached."); }
     }
