@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
             Vector2 shootDirection = ((Vector2)mousePos - (Vector2)playerTrans.position).normalized;
 
             GameObject bullet = Instantiate(bulletPrefab, playerTrans.position, Quaternion.identity);
-            bullet.transform.right = shootDirection;
+            bullet.GetComponent<BombBullet>().moveVec = shootDirection;
 
             lastAttackTime = Time.time;
         }

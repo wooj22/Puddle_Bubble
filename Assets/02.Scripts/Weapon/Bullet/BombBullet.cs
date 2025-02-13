@@ -9,6 +9,8 @@ public class BombBullet : MonoBehaviour
     [SerializeField] float explosionRadius = 10f;
     [SerializeField] CircleCollider2D bombAraa;
 
+    public Vector3 moveVec = Vector3.zero;
+
     private void Start()
     {
         Destroy(gameObject, 10f);
@@ -22,7 +24,7 @@ public class BombBullet : MonoBehaviour
     // √—æÀ¿Ãµø
     void Move()
     {
-        transform.Translate(transform.right * speed * Time.deltaTime, Space.Self);
+        transform.Translate(moveVec * speed * Time.deltaTime, Space.Self);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
