@@ -25,7 +25,7 @@ public class MudMonster : Monster
         }
     }
 
-    public float GetHealth()
+    public int GetHealth()
     {
         return Health;
     }

@@ -40,8 +40,19 @@ public class Weapon : MonoBehaviour
             Vector2 shootDirection = ((Vector2)mousePos - (Vector2)playerTrans.position).normalized;
 
             GameObject bullet = Instantiate(bulletPrefab, playerTrans.position, Quaternion.identity);
-            bullet.GetComponent<BombBullet>().moveVec = shootDirection;
-
+            if(Player.Instance.mainWeaponType == Player.WeaponType.Bomb)
+            {
+                bullet.GetComponent<BombBullet>().moveVec = shootDirection;
+            }
+            else if(Player.Instance.mainWeaponType == Player.WeaponType.Water)
+            {
+                bullet.GetComponent<WaterBullet>().moveVec = shootDirection;
+            }
+            else
+            {
+                bullet.GetComponent<GatlingBullet>().moveVec = shootDirection;
+            }
+            
             lastAttackTime = Time.time;
         }
     }

@@ -167,4 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   damage: 100
-  accuracy: 2
+  accuracy: 0.2
+  moveVec: {x: 0, y: 0, z: 0}

@@ -25,7 +25,7 @@ public class SandMonster : Monster
         }
     }
 
-    public float GetHealth()
+    public int GetHealth()
     {
         return Health;
     }
