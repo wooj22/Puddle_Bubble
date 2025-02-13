@@ -33,13 +33,14 @@ public class GatlingBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SandMonster"))
         {
-            //SandMonster sandMonster = /enemy.GetComponent<SandMonster>();
-            //sandMonster.TakeDamage(damage);
+            collision.gameObject.GetComponent<SandMonster>().TakeDamage(damage);
+            Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("MudMonster"))
+
+        if (collision.gameObject.CompareTag("MudMonster"))
         {
-            //MudMonster mudMonster = enemy.GetComponent<MudMonster>();
-            //mudMonster.TakeDamage(damage);
+            collision.gameObject.GetComponent<MudMonster>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }
