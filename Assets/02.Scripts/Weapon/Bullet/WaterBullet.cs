@@ -29,11 +29,12 @@ public class WaterBullet : MonoBehaviour
         int monsterHp=0;
         if (collision.gameObject.CompareTag("SandMonster"))
         {
-            //SandMonster sandMonster = /enemy.GetComponent<SandMonster>();
-            //sandMonster.TakeDamage(damage);
+            SandMonster sandMonster = collision.gameObject.GetComponent<SandMonster>();
+            sandMonster.TakeDamage(damage);
             //monsterHp = mudMonster.GetHp();
         }
-        else if (collision.gameObject.CompareTag("MudMonster"))
+        
+        if (collision.gameObject.CompareTag("MudMonster"))
         {
             //MudMonster mudMonster = enemy.GetComponent<MudMonster>();
             //mudMonster.TakeDamage(damage);
@@ -41,6 +42,7 @@ public class WaterBullet : MonoBehaviour
             //monsterHp = mudMonster.GetHp();
 
         }
+
         if (monsterHp == 0)
             return;
         damage -= monsterHp;

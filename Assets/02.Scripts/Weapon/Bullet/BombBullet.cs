@@ -41,6 +41,7 @@ public class BombBullet : MonoBehaviour
         }
     }
 
+    // ÆøÅº ¹üÀ§ Enemy get
     private void DamageNearbyEnemies(string monsterTag)
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
