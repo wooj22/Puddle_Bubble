@@ -13,7 +13,7 @@ public class Monster : MonoBehaviour
     public int Health;            // 체력
     public float Size;            // 크기
     public int AttackPower;       // 공격력
-    public Sprite[] GradeSprite;  // 등급별 스프라이트 배열
+    public Sprite[] GradeSprite;  // 등급별 스프라이트 배열 
 
     protected SpriteRenderer spriteRenderer;
 
@@ -78,5 +78,9 @@ public class Monster : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, player.position, (Speed/300f) * Time.deltaTime);
     }
 
-
+    protected void Death()
+    {        
+        Destroy(gameObject, 0.5f);
+        GameManager.instance.Score += (Health + (int)Speed) * AttackPower;
+    }
 }

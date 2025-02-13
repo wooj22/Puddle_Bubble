@@ -76,7 +76,7 @@ public class MonsterSpawner : MonoBehaviour
             monster.ApplyGradeModifiers();
            // monster.UpdateSprite(randomGrade); // 몬스터 색상 코드 조정 
         }
-        else { Debug.LogError("Spawned monster prefab does not have a Monster script attached."); }
+        else { return; }
     }
 
     private Vector3 GetRandomOffScreenPosition()

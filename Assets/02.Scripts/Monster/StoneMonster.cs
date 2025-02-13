@@ -22,11 +22,11 @@ public class StoneMonster : Monster
     {
         Health -= (int)damage;
         Debug.Log(Health);
-
+       
         if (Health <= 0)
         {
             anim.SetTrigger("Die");
-            Destroy(gameObject, 0.5f);
+            base.Death();
         }
     }
 

@@ -26,7 +26,7 @@ public class SandMonster : Monster
         if( Health <=0 )
         {
             anim.SetTrigger("Die");
-            Destroy(gameObject, 0.5f);
+            base.Death();
         }
     }
 
