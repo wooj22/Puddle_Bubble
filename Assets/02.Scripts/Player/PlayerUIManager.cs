@@ -19,7 +19,6 @@ public class PlayerUIManager : MonoBehaviour
     //[Header("UI Key Bindings")]
     //[SerializeField] private KeyCode testUIKey = KeyCode.Escape;
 
-
     public static PlayerUIManager Instance { get; private set; }
     private void Awake()
     {
@@ -34,17 +33,30 @@ public class PlayerUIManager : MonoBehaviour
         }
     }
 
+    // 현재 무기 UI
     public void UpdateCurrentWeaponUI(string text)
     {
         currentWeaponText.text = "현재무기 : [" + text + "]";
     }
 
-    // hp UI
+    // HP UI
     public void HpUiIconDown()
     {
         hpImageArray[Player.Instance.hp].sprite = miusHpSprite;
     }
 
-    // 탄창 UI
+    // 메인탄창 UI
+    public void UpdateMainAmmoUI(int mainAmmo, int maxAmmo)
+    {
+        mainAmmoText.text = mainAmmo.ToString();
+        mainAmmoImage.fillAmount = (float)mainAmmo / (float)maxAmmo;
+        Debug.Log(mainAmmo / maxAmmo);
+    }
 
+    // 서브탄창 UI
+    public void UpdateSubAmmoUI(int subAmmo, int maxAmmo)
+    {
+        subAmmoText.text = subAmmo.ToString();
+        subAmmoImage.fillAmount = (float)subAmmo / (float)maxAmmo;
+    }
 }

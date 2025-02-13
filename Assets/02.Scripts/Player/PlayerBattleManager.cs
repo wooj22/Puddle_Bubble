@@ -6,7 +6,6 @@ public class PlayerBattleManager : MonoBehaviour
 {
     [Header("Battle key Bindings")]
     [SerializeField] private KeyCode attackKey;  // °ø°ÝÅ°
-    [SerializeField] private KeyCode changeKey;  // ÅºÃ¢ º¯°æÅ°
 
     [Header("ReLoading")]
     [SerializeField] int loadingCheakTime = 3;
@@ -28,18 +27,49 @@ public class PlayerBattleManager : MonoBehaviour
 
     private void Update()
     {
-        WeaponLoading();
         AttackCall();
     }
 
     // ÅºÃ¢ º¯°æ
-    private void WeaponLoading()
+    public void WeaponSwitch()
     {
-        if (Input.GetKeyDown(changeKey))
+        // ÀåÂø¹«±â º¯°æ
+        Player.WeaponType mainWeapon = Player.Instance.mainWeaponType;
+        Player.Instance.mainWeaponType = Player.Instance.subWeaponType;
+        Player.Instance.subWeaponType = mainWeapon;
+
+        // UI
+        switch (Player.Instance.mainWeaponType)
         {
-            Player.WeaponType mainWeapon = Player.Instance.mainWeaponType;
-            Player.Instance.mainWeaponType = Player.Instance.subWeaponType;
-            Player.Instance.subWeaponType = mainWeapon;
+            case Player.WeaponType.Bomb:
+                PlayerUIManager.Instance.UpdateMainAmmoUI(bomb.currentAmmo, bomb.maxAmmo);
+                PlayerUIManager.Instance.UpdateCurrentWeaponUI("ÆøÅº");
+                break;
+            case Player.WeaponType.Water:
+                PlayerUIManager.Instance.UpdateMainAmmoUI(water.currentAmmo, water.maxAmmo);
+                PlayerUIManager.Instance.UpdateCurrentWeaponUI("´ë¹°ÃÑ");
+                break;
+            case Player.WeaponType.Getling:
+                PlayerUIManager.Instance.UpdateMainAmmoUI(getling.currentAmmo, getling.maxAmmo);
+                PlayerUIManager.Instance.UpdateCurrentWeaponUI("°ÔÆ²¸µ");
+                break;
+            default:
+                break;
+        }
+
+        switch (Player.Instance.subWeaponType)
+        {
+            case Player.WeaponType.Bomb:
+                PlayerUIManager.Instance.UpdateSubAmmoUI(bomb.currentAmmo, bomb.maxAmmo);
+                break;
+            case Player.WeaponType.Water:
+                PlayerUIManager.Instance.UpdateSubAmmoUI(water.currentAmmo, water.maxAmmo);
+                break;
+            case Player.WeaponType.Getling:
+                PlayerUIManager.Instance.UpdateSubAmmoUI(getling.currentAmmo, getling.maxAmmo);
+                break;
+            default:
+                break;
         }
     }
 
